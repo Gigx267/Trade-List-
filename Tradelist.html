@@ -1,838 +1,1172 @@
-<div id="background-container">
-    <div id="scanlines"></div>
-    <div id="noise"></div>
-  </div>
-  
-  <div class="container">
-    <header class="header">
-      <h1>Trader List </h1>
-      <p class="tagline">Connects you straight to sellers in the markets </p>
-    </header>
-    
-    <div class="intro">
-      
-      <p>Our Vendor Directory gives every market trader the digital presence they deserve while making it effortless for buyers to discover quality products and reliable suppliers.</p>
-    </div>
-    
-    <!-- Search and Filter Section -->
-    <div class="search-filter-container">
-      <div class="search-box">
-        <input type="text" id="search-input" placeholder="Search products or vendors..." class="retro-input">
-        <button id="search-btn" class="retro-btn">🔍 Search</button>
-      </div>
-      
-      <div class="filter-controls">
-        <select id="market-filter" class="retro-select">
-          <option value="">All Markets</option>
-        </select>
-        
-        <select id="category-filter" class="retro-select">
-          <option value="">All Categories</option>
-        </select>
-        
-        <button id="reset-filters" class="retro-btn">🔄 Reset</button>
-      </div>
-    </div>
-    
-    <div class="results-info">
-      <span id="results-count">Loading vendors...</span>
-      <span id="active-filters"></span>
-    </div>
-    
-    <div class="vendor-container">
-      <!-- Vendors will be rendered here -->
-    </div>
-    
-    <footer class="footer">
-      <p>© 2024 Tradelist | Bringing markets online since 2024</p>
-    </footer>
-  </div>
-  
-  <style>
-  /* Add these new styles to your existing CSS */
-  
-  /* Search and Filter Section */
-  .search-filter-container {
-    background-color: rgba(26, 26, 46, 0.7);
-    border: 1px solid var(--retro-primary);
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-  }
-  
-  .search-filter-container::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right, var(--retro-secondary), var(--retro-primary));
-  }
-  
-  .search-box {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .filter-controls {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  
-  /* Retro Form Elements */
-  .retro-input {
-    flex: 1;
-    padding: 0.5rem;
-    background-color: var(--retro-dark);
-    border: 1px solid var(--retro-primary);
-    color: var(--retro-text);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9rem;
-  }
-  
-  .retro-input:focus {
-    outline: none;
-    border-color: var(--retro-secondary);
-    box-shadow: 0 0 5px var(--retro-accent);
-  }
-  
-  .retro-select {
-    flex: 1;
-    min-width: 120px;
-    padding: 0.5rem;
-    background-color: var(--retro-dark);
-    border: 1px solid var(--retro-primary);
-    color: var(--retro-text);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9rem;
-  }
-  
-  .retro-btn {
-    padding: 0.5rem 1rem;
-    background-color: var(--retro-dark);
-    border: 1px solid var(--retro-primary);
-    color: var(--retro-primary);
-    font-family: 'Courier New', Courier, monospace;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-  }
-  
-  .retro-btn:hover {
-    background-color: var(--retro-primary);
-    color: var(--retro-dark);
-  }
-  
-  /* Results Info */
-  .results-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    color: var(--retro-secondary);
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  #active-filters {
-    color: var(--retro-primary);
-    font-style: italic;
-  }
-  
-  /* Loading Animation */
-  @keyframes loading-pulse {
-    0%, 100% {
-      opacity: 0.5;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-  
-  .loading {
-    animation: loading-pulse 1.5s infinite;
-    text-align: center;
-    padding: 2rem;
-  }
-  
-  /* No Results Message */
-  .no-results {
-    text-align: center;
-    padding: 2rem;
-    color: var(--retro-secondary);
-    grid-column: 1 / -1;
-  }
-  
-  /* Mobile Adjustments for Search */
-  @media (max-width: 768px) {
-    .search-box {
-      flex-direction: column;
-    }
-    
-    .filter-controls {
-      flex-direction: column;
-    }
-    
-    .retro-select, .retro-btn {
-      width: 100%;
-    }
-  }
-  </style>
-  
-  <script>
-  // Enhanced Vendor Data
-  const vendors = [
-    {
-      id: 1,
-      name: "Adebayo Textiles",
-      category: "Fabric & Clothing",
-      market: "Lagos Main Market",
-      location: "Lagos",
-      products: ["Ankara fabrics", "lace materials", "ready-made outfits"],
-      contact: "0803 456 7890",
-      featured: true
-    },
-    {
-      id: 2,
-      name: "Chike Spices",
-      category: "Food & Groceries",
-      market: "Onitsha Market",
-      location: "Anambra",
-      products: ["Local spices", "dried peppers", "traditional seasonings"],
-      contact: "0812 345 6789"
-    },
-    {
-      id: 3,
-      name: "Ngozi Pottery",
-      category: "Handicrafts",
-      market: "Abuja Arts Market",
-      location: "Abuja",
-      products: ["Clay pots", "ceramic dishes", "traditional artwork"],
-      contact: "0703 987 6543",
-      featured: true
-    },
-    {
-      id: 4,
-      name: "Yusuf Leatherworks",
-      category: "Fashion Accessories",
-      market: "Kano Leather Market",
-      location: "Kano",
-      products: ["Handbags", "belts", "wallets", "footwear"],
-      contact: "0905 678 1234"
-    },
-    {
-      id: 5,
-      name: "Ekaette Fish Market",
-      category: "Seafood",
-      market: "Calabar Market",
-      location: "Cross River",
-      products: ["Fresh fish", "smoked fish", "dried seafood"],
-      contact: "0807 654 3210"
-    },
-    {
-      id: 6,
-      name: "Oluwatoyin Beads",
-      category: "Jewelry",
-      market: "Ibadan Market",
-      location: "Oyo",
-      products: ["Glass beads", "traditional jewelry", "accessories"],
-      contact: "0810 234 5678",
-      featured: true
-    },
-    {
-      id: 7,
-      name: "Mohammed Grains",
-      category: "Agricultural Produce",
-      market: "Dawanau Market",
-      location: "Kano",
-      products: ["Rice", "millet", "sorghum", "beans"],
-      contact: "0802 345 6789"
-    },
-    {
-      id: 8,
-      name: "Amina Herbal Remedies",
-      category: "Health & Wellness",
-      market: "Sokoto Central Market",
-      location: "Sokoto",
-      products: ["Traditional herbs", "natural remedies", "oils"],
-      contact: "0815 678 9012"
-    },
-    {
-      id: 9,
-      name: "Bola Electronics",
-      category: "Electronics",
-      market: "Computer Village",
-      location: "Lagos",
-      products: ["Mobile phones", "accessories", "repairs"],
-      contact: "0809 876 5432"
-    },
-    
-    {
-      id: 10,
-      name: "Ifeanyi Furniture",
-      category: "Home Goods",
-      market: "Aba Market",
-      location: "Abia",
-      products: ["Wooden furniture", "home decor", "carvings"],
-      contact: "0811 223 3445"
-    }
-    
- 
-  ];
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    const vendorContainer = document.querySelector(".vendor-container");
-    const searchInput = document.getElementById("search-input");
-    const searchBtn = document.getElementById("search-btn");
-    const marketFilter = document.getElementById("market-filter");
-    const categoryFilter = document.getElementById("category-filter");
-    const resetBtn = document.getElementById("reset-filters");
-    const resultsCount = document.getElementById("results-count");
-    const activeFilters = document.getElementById("active-filters");
-    
-    let currentVendors = [];
-    let currentSearchTerm = "";
-    let currentMarketFilter = "";
-    let currentCategoryFilter = "";
-    
-    // Initialize the app
-    initMarketplace();
-    
-    function initMarketplace() {
-      // Render initial vendors
-      currentVendors = [...vendors];
-      renderVendors(currentVendors);
-      
-      // Populate filter dropdowns
-      populateFilters();
-      
-      // Set up event listeners
-      setupEventListeners();
-    }
-    
-    function populateFilters() {
-      // Get unique markets and categories
-      const markets = [...new Set(vendors.map(v => v.market))];
-      const categories = [...new Set(vendors.map(v => v.category))];
-      
-      // Populate market filter
-      markets.sort().forEach(market => {
-        const option = document.createElement("option");
-        option.value = market;
-        option.textContent = market;
-        marketFilter.appendChild(option);
-      });
-      
-      // Populate category filter
-      categories.sort().forEach(category => {
-        const option = document.createElement("option");
-        option.value = category;
-        option.textContent = category;
-        categoryFilter.appendChild(option);
-      });
-    }
-    
-    function setupEventListeners() {
-      // Search button click
-      searchBtn.addEventListener("click", performSearch);
-      
-      // Enter key in search input
-      searchInput.addEventListener("keyup", function(e) {
-        if (e.key === "Enter") {
-          performSearch();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader List</title>
+    <style>
+        /* New Color Palette based on the card design */
+        :root {
+          --main-color: #1a1a2e;
+          --bg-color: #12631b;
+          --accent-color: #4bc190;
+          --secondary-color: #f85565;
+          --text-color: #1a1a2e;
+          --light-color: #F6DB96;
+          --progress-bg: #00000030;
+          --scanline: rgba(0, 0, 0, 0.1);
+          --noise-color: rgba(255, 255, 255, 0.05);
         }
-      });
-      
-      // Filter changes
-      marketFilter.addEventListener("change", function() {
-        currentMarketFilter = this.value;
-        filterVendors();
-      });
-      
-      categoryFilter.addEventListener("change", function() {
-        currentCategoryFilter = this.value;
-        filterVendors();
-      });
-      
-      // Reset filters
-      resetBtn.addEventListener("click", resetFilters);
-    }
-    
-    function performSearch() {
-      currentSearchTerm = searchInput.value.trim().toLowerCase();
-      filterVendors();
-    }
-    
-    function filterVendors() {
-      // Start with all vendors
-      let filtered = [...vendors];
-      
-      // Apply search term filter
-      if (currentSearchTerm) {
-        filtered = filtered.filter(vendor => {
-          // Search vendor name, products, and category
-          const nameMatch = vendor.name.toLowerCase().includes(currentSearchTerm);
-          const productMatch = vendor.products.some(p => 
-            p.toLowerCase().includes(currentSearchTerm)
+
+        /* Base Styles */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html {
+          font-size: 16px;
+          height: 100%;
+        }
+
+        body {
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          line-height: 1.6;
+          height: 100%;
+          overflow-x: hidden;
+          position: relative;
+          padding: 0;
+          margin: 0;
+        }
+
+        /* CRT Screen Effects (subtler version) */
+        #background-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          overflow: hidden;
+          background-color: var(--bg-color);
+        }
+
+        #scanlines {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            var(--scanline) 50%,
+            transparent 100%
           );
-          const categoryMatch = vendor.category.toLowerCase().includes(currentSearchTerm);
-          const marketMatch = vendor.market.toLowerCase().includes(currentSearchTerm);
-          
-          return nameMatch || productMatch || categoryMatch || marketMatch;
-        });
-      }
-      
-      // Apply market filter
-      if (currentMarketFilter) {
-        filtered = filtered.filter(vendor => 
-          vendor.market === currentMarketFilter
-        );
-      }
-      
-      // Apply category filter
-      if (currentCategoryFilter) {
-        filtered = filtered.filter(vendor => 
-          vendor.category === currentCategoryFilter
-        );
-      }
-      
-      // Update current vendors and render
-      currentVendors = filtered;
-      renderVendors(currentVendors);
-      
-      // Update active filters display
-      updateActiveFilters();
-    }
-    
-    function resetFilters() {
-      // Reset all filters
-      searchInput.value = "";
-      marketFilter.value = "";
-      categoryFilter.value = "";
-      
-      // Reset state
-      currentSearchTerm = "";
-      currentMarketFilter = "";
-      currentCategoryFilter = "";
-      
-      // Show all vendors
-      currentVendors = [...vendors];
-      renderVendors(currentVendors);
-      
-      // Update active filters display
-      updateActiveFilters();
-    }
-    
-    function updateActiveFilters() {
-      const activeFiltersList = [];
-      
-      if (currentSearchTerm) {
-        activeFiltersList.push(`Search: "${currentSearchTerm}"`);
-      }
-      
-      if (currentMarketFilter) {
-        activeFiltersList.push(`Market: ${currentMarketFilter}`);
-      }
-      
-      if (currentCategoryFilter) {
-        activeFiltersList.push(`Category: ${currentCategoryFilter}`);
-      }
-      
-      if (activeFiltersList.length > 0) {
-        activeFilters.textContent = activeFiltersList.join(" • ");
-      } else {
-        activeFilters.textContent = "Showing all vendors";
-      }
-    }
-    
-    function renderVendors(vendorsToRender) {
-      // Clear existing vendors
-      vendorContainer.innerHTML = "";
-      
-      // Update results count
-      resultsCount.textContent = `${vendorsToRender.length} ${vendorsToRender.length === 1 ? 'vendor' : 'vendors'} found`;
-      
-      if (vendorsToRender.length === 0) {
-        // Show no results message
-        const noResults = document.createElement("div");
-        noResults.classList.add("no-results");
-        noResults.textContent = "No vendors match your search criteria";
-        vendorContainer.appendChild(noResults);
-        return;
-      }
-      
-      // Render each vendor
-      vendorsToRender.forEach(vendor => {
-        const vendorCard = document.createElement("div");
-        vendorCard.classList.add("vendor-card");
-        if (vendor.featured) {
-          vendorCard.classList.add("featured");
+          background-size: 100% 4px;
+          pointer-events: none;
+          z-index: 1;
         }
-        
-        vendorCard.innerHTML = `
-          <h3 class="vendor-name">${vendor.name}</h3>
-          <span class="vendor-category">${vendor.category}</span>
-          <div class="vendor-location">
-            <span class="market">${vendor.market}</span> • ${vendor.location}
-          </div>
-          <div class="vendor-products">
-            <strong>Products:</strong> ${vendor.products.join(", ")}
-          </div>
-          <div class="vendor-contact">
-            <span>📞 ${vendor.contact}</span>
-            <button class="contact-btn" data-contact="${vendor.contact}">Contact</button>
-          </div>
-        `;
-        
-        vendorContainer.appendChild(vendorCard);
-      });
-      
-      // Reattach contact button events
-      setupContactButtons();
-    }
-    
-    function setupContactButtons() {
-      const contactButtons = document.querySelectorAll(".contact-btn");
-      
-      contactButtons.forEach(button => {
-        button.addEventListener("click", function() {
-          const phoneNumber = this.getAttribute("data-contact");
-          // In a real app, this would initiate a call or open a chat
-          alert(`Connecting to ${phoneNumber}...`);
-        });
-      });
-    }
-  });
-  </script>
-  <style>
-    /* Retro Color Palette */
-    :root {
-      --retro-dark: #1a1a2e;
-      --retro-primary: #4cc9f0;
-      --retro-secondary: #25f780;
-      --retro-accent: #b5179e;
-      --retro-light: #f8f9fa;
-      --retro-bg: #0d0c1d;
-      --retro-scanline: rgba(0, 0, 0, 0.2);
-      --retro-text: #e2e2e2;
-    }
-    
-    /* Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    html {
-      font-size: 16px;
-      height: 100%;
-    }
-    
-    body {
-      font-family: 'Courier New', Courier, monospace;
-      background-color: var(--retro-bg);
-      color: var(--retro-text);
-      line-height: 1.6;
-      height: 100%;
-      overflow-x: hidden;
-      position: relative;
-      padding: 0;
-      margin: 0;
-    }
-    
-    /* CRT Screen Effects */
-    #background-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-    
-    #scanlines {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        var(--retro-scanline) 50%,
-        transparent 100%
-      );
-      background-size: 100% 4px;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    #noise {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.20'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
-    
-    /* Container */
-    .container {
-      max-width: 100%;
-      padding: 1.5rem;
-      margin: 0 auto;
-      position: relative;
-      z-index: 10;
-    }
-    
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px dashed var(--retro-primary);
-    }
-    
-    .header h1 {
-      font-size: 2.5rem;
-      color: var(--retro-primary);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(76, 201, 240, 0.3);
-    }
-    
-    .tagline {
-      font-size: 1.1rem;
-      color: var(--retro-secondary);
-      font-style: italic;
-    }
-    
-    /* Intro Section */
-    .intro {
-      background-color: rgba(26, 26, 46, 0.7);
-      border: 1px solid var(--retro-accent);
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      border-radius: 0;
-      box-shadow: 0 0 15px rgba(247, 37, 133, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .intro::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--retro-primary), var(--retro-secondary));
-    }
-    
-    .intro p {
-      margin-bottom: 1rem;
-    }
-    
-    .intro p:last-child {
-      margin-bottom: 0;
-    }
-    
-    /* Vendor Container */
-    .vendor-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    
-    /* Vendor Card */
-    .vendor-card {
-      background-color: rgba(26, 26, 46, 0.7);
-      border: 1px solid var(--retro-primary);
-      border-radius: 0;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .vendor-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
-      border-color: var(--retro-secondary);
-    }
-    
-    .vendor-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(to right, var(--retro-primary), var(--retro-secondary));
-    }
-    
-    .vendor-name {
-      font-size: 1.3rem;
-      color: var(--retro-primary);
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-    
-    .vendor-category {
-      display: inline-block;
-      background-color: var(--retro-accent);
-      color: white;
-      padding: 0.2rem 0.5rem;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
-      border-radius: 3px;
-    }
-    
-    .vendor-location {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--retro-light);
-    }
-    
-    .vendor-location::before {
-      content: "📍";
-      margin-right: 0.5rem;
-    }
-    
-    .vendor-products {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-    
-    .vendor-products strong {
-      color: var(--retro-secondary);
-    }
-    
-    .vendor-contact {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px dashed var(--retro-primary);
-      display: flex;
-      justify-content: space-between;
-    }
-    
-    .contact-btn {
-      background-color: transparent;
-      border: 1px solid var(--retro-primary);
-      color: var(--retro-primary);
-      padding: 0.3rem 0.8rem;
-      font-family: inherit;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 3px;
-    }
-    
-    .contact-btn:hover {
-      background-color: var(--retro-primary);
-      color: var(--retro-dark);
-    }
-    
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      border-top: 2px dashed var(--retro-primary);
-      font-size: 0.9rem;
-      color: var(--retro-light);
-    }
-    
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      .header h1 {
-        font-size: 2rem;
-      }
-      
-      .tagline {
-        font-size: 1rem;
-      }
-      
-      .vendor-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .intro {
-        padding: 1rem;
-      }
-    }
-    
-    /* Retro Animations */
-    @keyframes flicker {
-      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-        opacity: 1;
-      }
-      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-        opacity: 0.8;
-      }
-    }
-    
-    .container {
-      animation: flicker 10s infinite alternate;
-    }
-    
-    /* Glitch Effect on Hover */
-    .vendor-card:hover::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        0deg,
-        transparent 0%,
-        rgba(247, 37, 133, 0.1) 50%,
-        transparent 100%
-      );
-      animation: glitch 0.5s infinite;
-      opacity: 0;
-      pointer-events: none;
-    }
-    
-    @keyframes glitch {
-      0% {
-        transform: translate(0);
-      }
-      20% {
-        transform: translate(-2px, 2px);
-      }
-      40% {
-        transform: translate(-2px, -2px);
-      }
-      60% {
-        transform: translate(2px, 2px);
-      }
-      80% {
-        transform: translate(2px, -2px);
-      }
-      100% {
-        transform: translate(0);
-      }
-    }
-    
-    .vendor-card:hover::after {
-      opacity: 0.7;
-    }
+
+        #noise {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        /* Container */
+        .container {
+          max-width: 1200px;
+          padding: 1.5rem;
+          margin: 0 auto;
+          position: relative;
+          z-index: 10;
+        }
+
+        /* Header */
+        .header {
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+
+        .header h1 {
+          font-size: 2.5rem;
+          color: var(--main-color);
+          margin-bottom: 0.5rem;
+          font-weight: 900;
+        }
+
+        .tagline {
+          font-size: 1.1rem;
+          color: var(--main-color);
+          font-weight: 500;
+        }
+
+        /* Card Styles */
+        .intro-card,
+        .search-filter-card,
+        .results-info-card,
+        .vendor-card,
+        .footer-card {
+          background: var(--light-color);
+          border-radius: 20px;
+          padding: 25px;
+          margin-bottom: 1.5rem;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Intro Card */
+        .intro-card {
+          background: var(--main-color);
+          color: white;
+        }
+
+        .intro-card__title {
+          font-weight: 900;
+          font-size: 1.8rem;
+          margin-bottom: 10px;
+          color: var(--light-color);
+        }
+
+        .intro-card__subtitle {
+          font-weight: 400;
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+
+        /* Search and Filter Card */
+        .search-filter-card {
+          background: var(--light-color);
+        }
+
+        .search-box {
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .filter-controls {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+        }
+
+        /* Retro Form Elements */
+        .retro-input {
+          flex: 1;
+          padding: 0.8rem;
+          background-color: white;
+          border: 2px solid var(--main-color);
+          color: var(--text-color);
+          font-family: inherit;
+          font-size: 0.9rem;
+          border-radius: 10px;
+        }
+
+        .retro-input:focus {
+          outline: none;
+          border-color: var(--accent-color);
+          box-shadow: 0 0 5px var(--accent-color);
+        }
+
+        .retro-select {
+          flex: 1;
+          min-width: 120px;
+          padding: 0.8rem;
+          background-color: white;
+          border: 2px solid var(--main-color);
+          color: var(--text-color);
+          font-family: inherit;
+          font-size: 0.9rem;
+          border-radius: 10px;
+        }
+
+        .retro-btn {
+          padding: 0.8rem 1.2rem;
+          background-color: var(--main-color);
+          border: 2px solid var(--main-color);
+          color: white;
+          font-family: inherit;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+          border-radius: 10px;
+        }
+
+        .retro-btn:hover {
+          background-color: var(--accent-color);
+          border-color: var(--accent-color);
+        }
+
+        /* Results Info Card */
+        .results-info-card {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.9rem;
+          color: var(--main-color);
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          padding: 15px 25px !important;
+          background: var(--light-color);
+        }
+
+        #active-filters {
+          color: var(--secondary-color);
+          font-weight: 500;
+        }
+
+        /* Vendor Container */
+        .vendor-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        /* Vendor Card */
+        .vendor-card {
+          background: var(--light-color);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .vendor-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .vendor-name {
+          font-size: 1.3rem;
+          color: var(--main-color);
+          margin-bottom: 0.5rem;
+          font-weight: 900;
+        }
+
+        .vendor-category {
+          display: inline-block;
+          background-color: var(--accent-color);
+          color: white;
+          padding: 0.3rem 0.8rem;
+          font-size: 0.8rem;
+          margin-bottom: 1rem;
+          border-radius: 20px;
+          font-weight: 500;
+        }
+
+        .vendor-location {
+          display: flex;
+          align-items: center;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+          color: var(--main-color);
+        }
+
+        .vendor-location::before {
+          content: "📍";
+          margin-right: 0.5rem;
+        }
+
+        .vendor-products {
+          margin-top: 1rem;
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .vendor-products strong {
+          color: var(--secondary-color);
+          font-weight: 600;
+        }
+
+        .vendor-contact {
+          margin-top: 1.5rem;
+          padding-top: 1rem;
+          border-top: 2px dashed var(--main-color);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .contact-btn {
+          background-color: var(--main-color);
+          border: none;
+          color: white;
+          padding: 0.5rem 1rem;
+          font-family: inherit;
+          font-size: 0.8rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          border-radius: 20px;
+          font-weight: 500;
+        }
+
+        .contact-btn:hover {
+          background-color: var(--secondary-color);
+        }
+
+        .featured .vendor-name::after {
+          content: "⭐";
+          margin-left: 0.5rem;
+          display: inline-block;
+        }
+
+        /* Footer Card */
+        .footer-card {
+          text-align: center;
+          margin-top: 2rem;
+          background: var(--main-color);
+          color: white;
+        }
+
+        /* Loading Animation */
+        @keyframes loading-pulse {
+          0%, 100% {
+            opacity: 0.5;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+
+        .loading {
+          animation: loading-pulse 1.5s infinite;
+          text-align: center;
+          padding: 2rem;
+        }
+
+        /* No Results Message */
+        .no-results {
+          text-align: center;
+          padding: 2rem;
+          color: var(--secondary-color);
+          grid-column: 1 / -1;
+          font-weight: 500;
+        }
+
+        /* Progress Indicator (for potential future use) */
+        .card__progress progress {
+          width: 100%;
+          height: 4px;
+          border-radius: 100px;
+        }
+
+        .card__progress progress::-webkit-progress-bar {
+          background-color: var(--progress-bg);
+          border-radius: 100px;
+        }
+
+        .card__progress progress::-webkit-progress-value {
+          background-color: var(--main-color);
+          border-radius: 100px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+          .container {
+            padding: 1rem;
+          }
+          
+          .header h1 {
+            font-size: 2rem;
+          }
+          
+          .tagline {
+            font-size: 1rem;
+          }
+          
+          .vendor-container {
+            grid-template-columns: 1fr;
+          }
+          
+          .search-box {
+            flex-direction: column;
+          }
+          
+          .filter-controls {
+            flex-direction: column;
+          }
+          
+          .retro-select, .retro-btn {
+            width: 100%;
+          }
+        }
     </style>
-    
+</head>
+<body>
+    <div id="background-container">
+        <div id="scanlines"></div>
+        <div id="noise"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+          <h1>Trader List</h1>
+          <p class="tagline">Connects you straight to sellers in the markets</p>
+        </header>
+        
+        <div class="intro-card">
+          <div class="intro-card__wrapper">
+            <div class="intro-card__content">
+              <h2 class="intro-card__title">Vendor Directory</h2>
+              <p class="intro-card__subtitle">Our Vendor Directory gives every market trader the digital presence they deserve while making it effortless for buyers to discover quality products and reliable suppliers.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Search and Filter Section -->
+        <div class="search-filter-card">
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search products or vendors..." class="retro-input">
+            <button id="search-btn" class="retro-btn">🔍 Search</button>
+          </div>
+          
+          <div class="filter-controls">
+            <select id="market-filter" class="retro-select">
+              <option value="">All Markets</option>
+            </select>
+            
+            <select id="category-filter" class="retro-select">
+              <option value="">All Categories</option>
+            </select>
+            
+            <button id="reset-filters" class="retro-btn">🔄 Reset</button>
+          </div>
+        </div>
+        
+        <div class="results-info-card">
+          <span id="results-count">Loading vendors...</span>
+          <span id="active-filters"></span>
+        </div>
+        
+        <div class="vendor-container">
+          <!-- Vendors will be rendered here -->
+        </div>
+        
+        <footer class="footer-card">
+          <p>© 2024 Tradelist | Bringing markets online since 2024</p>
+        </footer>
+    </div>
+
+    <script>
+        // Enhanced Vendor Data with 50 vendors
+        const vendors = [
+          {
+            id: 1,
+            name: "Lightwave Bay Co.",
+            category: "Light Fittings",
+            market: "Alaba International Market",
+            location: "Lagos",
+            products: ["Chandeliers", "Wall brackets", "Spotlights", "Sockets and Switches"],
+            contact: "08177907410",
+            shopNumber: "A27 and 28 Alcobra Plaza"
+          },
+          {
+            id: 2,
+            name: "OZYBELAS CLASSIC",
+            category: "Men's Fashion Retail",
+            market: "Ogui Market",
+            location: "Enugu",
+            products: ["Shoes", "Clothes", "Accessories"],
+            contact: "08035450576",
+            shopAddress: "84 Ogui Road by Denten, Opposite Ogui Police Station"
+          },
+          {
+            id: 3,
+            name: "Tabbita Essentials",
+            category: "Underwear & Lingerie",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Panties", "Brassieres", "Towels", "Boxers", "Nightwears", "Body Shapers", "Swimsuits"],
+            contact: "08106676484",
+            shopNumber: "B4 No 12 & 9"
+          },
+          {
+            id: 4,
+            name: "Divine Electronics Hub",
+            category: "Electronics",
+            market: "Computer Village, Ikeja",
+            location: "Lagos",
+            products: ["Televisions", "Home Theaters", "Laptops", "Mobile Phones"],
+            contact: "08023456789",
+            shopAddress: "15 Awolowo Way, Opposite Slot Plaza"
+          },
+          {
+            id: 5,
+            name: "Golden Spices & Foods",
+            category: "Food & Groceries",
+            market: "Mile 12 Market",
+            location: "Lagos",
+            products: ["Spices", "Grains", "Palm Oil", "Yams"],
+            contact: "08134567890",
+            shopAddress: "Stall B32, Mile 12 Market"
+          },
+          {
+            id: 6,
+            name: "Royal Furniture Gallery",
+            category: "Furniture",
+            market: "Dei Dei Market",
+            location: "Abuja",
+            products: ["Sofas", "Wardrobes", "Beds", "Dining Tables"],
+            contact: "08098765432",
+            shopNumber: "Block 7, Shop 25"
+          },
+          {
+            id: 7,
+            name: "Glamour Kids Wear",
+            category: "Children's Clothing",
+            market: "Ariaria International Market",
+            location: "Aba",
+            products: ["Baby Clothes", "School Uniforms", "Shoes"],
+            contact: "08156789012",
+            shopNumber: "F12, Line 3"
+          },
+          {
+            id: 8,
+            name: "Fresh & Green",
+            category: "Fresh Produce",
+            market: "Wuse Market",
+            location: "Abuja",
+            products: ["Vegetables", "Fruits", "Herbs"],
+            contact: "08012345678",
+            shopNumber: "Stall 45, Block D"
+          },
+          {
+            id: 9,
+            name: "Stylish Accessories",
+            category: "Fashion Accessories",
+            market: "Onitsha Main Market",
+            location: "Onitsha",
+            products: ["Bags", "Jewelry", "Belts"],
+            contact: "08123456789",
+            shopAddress: "Shop C10, Line 5"
+          },
+          {
+            id: 10,
+            name: "AutoTech Spare Parts",
+            category: "Automobile Parts",
+            market: "Ladipo Market",
+            location: "Lagos",
+            products: ["Brake Pads", "Tires", "Batteries", "Car Accessories"],
+            contact: "08087654321",
+            shopNumber: "Stall A15, Block 2"
+          },
+          {
+            id: 11,
+            name: "Modern Prints & Fabrics",
+            category: "Fabrics",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Ankara", "Lace", "Silk", "Cotton"],
+            contact: "08112345678",
+            shopNumber: "C32, Line 4"
+          },
+          {
+            id: 12,
+            name: "TechGadgets Hub",
+            category: "Electronics",
+            market: "Computer Village, Ikeja",
+            location: "Lagos",
+            products: ["Smartphones", "Laptops", "Smartwatches", "Tablet Accessories"],
+            contact: "08098765432",
+            shopAddress: "Suite 10, Awolowo Way"
+          },
+          {
+            id: 13,
+            name: "Graceful Home Essentials",
+            category: "Home Essentials",
+            market: "Mile 1 Market",
+            location: "Port Harcourt",
+            products: ["Curtains", "Bed Sheets", "Pillow Covers", "Kitchenware"],
+            contact: "08045678901",
+            shopNumber: "Block A, Stall 17"
+          },
+          {
+            id: 14,
+            name: "Kingsley Auto Works",
+            category: "Automobile Parts",
+            market: "Ladipo Market",
+            location: "Lagos",
+            products: ["Engines", "Gearboxes", "Suspension Parts", "Tires"],
+            contact: "08123456789",
+            shopNumber: "Stall 20, Block C"
+          },
+          {
+            id: 15,
+            name: "Elite Fashion House",
+            category: "Women's Fashion",
+            market: "Ariaria International Market",
+            location: "Aba",
+            products: ["Dresses", "Shoes", "Handbags", "Accessories"],
+            contact: "08156789012",
+            shopNumber: "G5, Line 2"
+          },
+          {
+            id: 16,
+            name: "Herbal Health Remedies",
+            category: "Herbal Products",
+            market: "Wuse Market",
+            location: "Abuja",
+            products: ["Herbal Teas", "Ointments", "Supplements", "Essential Oils"],
+            contact: "08023456789",
+            shopNumber: "Stall 12, Block D"
+          },
+          {
+            id: 17,
+            name: "Luxury Timepieces",
+            category: "Watches",
+            market: "Onitsha Main Market",
+            location: "Onitsha",
+            products: ["Luxury Watches", "Sport Watches", "Smartwatches"],
+            contact: "08087654321",
+            shopAddress: "Shop B5, Line 1"
+          },
+          {
+            id: 18,
+            name: "Classic Carpets & Rugs",
+            category: "Home Decor",
+            market: "Dei Dei Market",
+            location: "Abuja",
+            products: ["Persian Carpets", "Area Rugs", "Doormats"],
+            contact: "08134567890",
+            shopNumber: "Block 6, Stall 15"
+          },
+          {
+            id: 19,
+            name: "Fresh Catch Seafood",
+            category: "Seafood",
+            market: "Mile 12 Market",
+            location: "Lagos",
+            products: ["Crabs", "Prawns", "Fish", "Lobsters"],
+            contact: "08123456789",
+            shopAddress: "Stall B45, Line 3"
+          },
+          {
+            id: 20,
+            name: "Premier Sportswear",
+            category: "Sportswear",
+            market: "Ogui Market",
+            location: "Enugu",
+            products: ["Jerseys", "Sneakers", "Tracksuits"],
+            contact: "08045678901",
+            shopAddress: "Shop 22, Line 4"
+          },
+          {
+            id: 21,
+            name: "Elegant Bridal Store",
+            category: "Bridal Wear",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Wedding Dresses", "Veils", "Bridesmaid Dresses"],
+            contact: "08156789012",
+            shopNumber: "B12, Line 6"
+          },
+          {
+            id: 22,
+            name: "Green Fresh Foods",
+            category: "Organic Foods",
+            market: "Wuse Market",
+            location: "Abuja",
+            products: ["Organic Vegetables", "Fruits", "Herbs"],
+            contact: "08012345678",
+            shopNumber: "Stall 10, Block F"
+          },
+          {
+            id: 23,
+            name: "Fashion Forward",
+            category: "Men's Fashion",
+            market: "Ariaria International Market",
+            location: "Aba",
+            products: ["Suits", "Ties", "Shoes"],
+            contact: "08134567890",
+            shopNumber: "G8, Line 3"
+          },
+          {
+            id: 24,
+            name: "AutoMax Parts",
+            category: "Automobile Parts",
+            market: "Ladipo Market",
+            location: "Lagos",
+            products: ["Car Engines", "Lights", "Brake Parts"],
+            contact: "08045678901",
+            shopNumber: "Stall 5, Block C"
+          },
+          {
+            id: 25,
+            name: "Luxury Bags & Shoes",
+            category: "Fashion Accessories",
+            market: "Onitsha Main Market",
+            location: "Onitsha",
+            products: ["Handbags", "Shoes", "Wallets"],
+            contact: "08012345678",
+            shopAddress: "Shop A2, Line 7"
+          },
+          {
+            id: 26,
+            name: "Graceful Baby World",
+            category: "Baby Products",
+            market: "Ariaria International Market",
+            location: "Onitsha",
+            products: ["Baby Toys", "Diapers", "Feeding Bottles"],
+            contact: "08123456789",
+            shopNumber: "C34 Line 6"
+          },
+          {
+            id: 27,
+            name: "Zee Cosmetics Hub",
+            category: "Cosmetics",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Foundation", "Lipsticks", "Makeup Kits"],
+            contact: "08098765432",
+            shopNumber: "B20 Line 8"
+          },
+          {
+            id: 28,
+            name: "Apex Agro Tools",
+            category: "Agricultural Tools",
+            market: "Mile 12 Market",
+            location: "Lagos",
+            products: ["Cutlasses", "Sprayers", "Harrows"],
+            contact: "08145678901",
+            shopNumber: "A5 Section 3"
+          },
+          {
+            id: 29,
+            name: "Omega Stationery",
+            category: "Stationery",
+            market: "Wuse Market",
+            location: "Abuja",
+            products: ["Pens", "Notebooks", "Markers"],
+            contact: "08034567890",
+            shopNumber: "D15 Line 2"
+          },
+          {
+            id: 30,
+            name: "Alpha Electronics",
+            category: "Electronics",
+            market: "Computer Village",
+            location: "Lagos",
+            products: ["Laptops", "Mobile Phones", "Printers"],
+            contact: "08156789012",
+            shopNumber: "E20 Line 4"
+          },
+          {
+            id: 31,
+            name: "Royal Kitchen Supplies",
+            category: "Kitchen Supplies",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Cookers", "Blenders", "Pots"],
+            contact: "08023456789",
+            shopNumber: "C12 Line 9"
+          },
+          {
+            id: 32,
+            name: "Chuks Carpets",
+            category: "Home Decor",
+            market: "Dei Dei Market",
+            location: "Abuja",
+            products: ["Carpets", "Rugs", "Floor Mats"],
+            contact: "08134567890",
+            shopNumber: "B12 Section 4"
+          },
+          {
+            id: 33,
+            name: "Everyday Groceries",
+            category: "Groceries",
+            market: "Mile 12 Market",
+            location: "Lagos",
+            products: ["Rice", "Beans", "Oil"],
+            contact: "08123456789",
+            shopNumber: "A20 Line 7"
+          },
+          {
+            id: 34,
+            name: "Elegance Jewelry",
+            category: "Jewelry",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Rings", "Necklaces", "Earrings"],
+            contact: "08098765432",
+            shopNumber: "C15 Line 10"
+          },
+          {
+            id: 35,
+            name: "Solar Tech Systems",
+            category: "Solar Panels",
+            market: "Alaba International Market",
+            location: "Lagos",
+            products: ["Solar Batteries", "Panels", "Inverters"],
+            contact: "08145678901",
+            shopNumber: "B30 Line 5"
+          },
+          {
+            id: 36,
+            name: "Vivid Textiles",
+            category: "Fabrics",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Cotton", "Silk", "Ankara"],
+            contact: "08034567890",
+            shopNumber: "D10 Line 3"
+          },
+          {
+            id: 37,
+            name: "Sports World",
+            category: "Sports Equipment",
+            market: "Ariaria International Market",
+            location: "Aba",
+            products: ["Football Kits", "Tennis Rackets"],
+            contact: "08156789012",
+            shopNumber: "G20 Line 4"
+          },
+          {
+            id: 38,
+            name: "Prime Furniture",
+            category: "Furniture",
+            market: "Dei Dei Market",
+            location: "Abuja",
+            products: ["Wardrobes", "Dining Tables"],
+            contact: "08023456789",
+            shopNumber: "C12 Section 9"
+          },
+          {
+            id: 39,
+            name: "Fresh Veggies Hub",
+            category: "Vegetables",
+            market: "Mile 12 Market",
+            location: "Lagos",
+            products: ["Carrots", "Cabbage", "Spinach"],
+            contact: "08123456789",
+            shopAddress: "A10 Stall 4"
+          },
+          {
+            id: 40,
+            name: "ProTools Mechanics",
+            category: "Automobile Tools",
+            market: "Ladipo Market",
+            location: "Lagos",
+            products: ["Spanners", "Jacks", "Toolboxes"],
+            contact: "08098765432",
+            shopNumber: "B40 Line 3"
+          },
+          {
+            id: 41,
+            name: "Noble Shoes",
+            category: "Footwear",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Sneakers", "Sandals"],
+            contact: "08134567890",
+            shopNumber: "D25 Line 6"
+          },
+          {
+            id: 42,
+            name: "Infinity Computers",
+            category: "Computers",
+            market: "Computer Village",
+            location: "Lagos",
+            products: ["Desktops", "Monitors", "Keyboards"],
+            contact: "08145678901",
+            shopNumber: "E15 Line 7"
+          },
+          {
+            id: 43,
+            name: "Ritzy Watches",
+            category: "Watches",
+            market: "Onitsha Main Market",
+            location: "Onitsha",
+            products: ["Luxury Watches", "Smartwatches"],
+            contact: "08023456789",
+            shopAddress: "F20 Line 5"
+          },
+          {
+            id: 44,
+            name: "Lush Hair World",
+            category: "Hair Products",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Wigs", "Hair Extensions"],
+            contact: "08123456789",
+            shopNumber: "C40 Line 12"
+          },
+          {
+            id: 45,
+            name: "Perfect AutoFix",
+            category: "Car Repairs",
+            market: "Ladipo Market",
+            location: "Lagos",
+            products: ["Brake Pads", "Shock Absorbers"],
+            contact: "08098765432",
+            shopNumber: "A15 Line 8"
+          },
+          {
+            id: 46,
+            name: "Elite Bags",
+            category: "Bags",
+            market: "Onitsha Main Market",
+            location: "Onitsha",
+            products: ["Handbags", "Travel Bags"],
+            contact: "08134567890",
+            shopNumber: "D10 Line 7"
+          },
+          {
+            id: 47,
+            name: "Classic Tiles",
+            category: "Building Materials",
+            market: "Dei Dei Market",
+            location: "Abuja",
+            products: ["Floor Tiles", "Wall Tiles"],
+            contact: "08145678901",
+            shopNumber: "B60 Section 8"
+          },
+          {
+            id: 48,
+            name: "Royal Phones",
+            category: "Mobile Phones",
+            market: "Computer Village",
+            location: "Lagos",
+            products: ["iPhones", "Android Phones"],
+            contact: "08023456789",
+            shopNumber: "C30 Line 2"
+          },
+          {
+            id: 49,
+            name: "Grand Spices",
+            category: "Spices",
+            market: "Mile 12 Market",
+            location: "Lagos",
+            products: ["Curry", "Thyme", "Pepper"],
+            contact: "08123456789",
+            shopNumber: "A50 Line 10"
+          },
+          {
+            id: 50,
+            name: "Luxury Lingerie",
+            category: "Lingerie",
+            market: "Balogun Market",
+            location: "Lagos",
+            products: ["Nightwear", "Body Shapers"],
+            contact: "08098765432",
+            shopNumber: "D30 Line 15"
+          }
+        ];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const vendorContainer = document.querySelector(".vendor-container");
+            const searchInput = document.getElementById("search-input");
+            const searchBtn = document.getElementById("search-btn");
+            const marketFilter = document.getElementById("market-filter");
+            const categoryFilter = document.getElementById("category-filter");
+            const resetBtn = document.getElementById("reset-filters");
+            const resultsCount = document.getElementById("results-count");
+            const activeFilters = document.getElementById("active-filters");
+            
+            let currentVendors = [];
+            let currentSearchTerm = "";
+            let currentMarketFilter = "";
+            let currentCategoryFilter = "";
+            
+            // Initialize the app
+            initMarketplace();
+            
+            function initMarketplace() {
+              // Render initial vendors
+              currentVendors = [...vendors];
+              renderVendors(currentVendors);
+              
+              // Populate filter dropdowns
+              populateFilters();
+              
+              // Set up event listeners
+              setupEventListeners();
+            }
+            
+            function populateFilters() {
+              // Get unique markets and categories
+              const markets = [...new Set(vendors.map(v => v.market))];
+              const categories = [...new Set(vendors.map(v => v.category))];
+              
+              // Populate market filter
+              markets.sort().forEach(market => {
+                const option = document.createElement("option");
+                option.value = market;
+                option.textContent = market;
+                marketFilter.appendChild(option);
+              });
+              
+              // Populate category filter
+              categories.sort().forEach(category => {
+                const option = document.createElement("option");
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+              });
+            }
+            
+            function setupEventListeners() {
+              // Search button click
+              searchBtn.addEventListener("click", performSearch);
+              
+              // Enter key in search input
+              searchInput.addEventListener("keyup", function(e) {
+                if (e.key === "Enter") {
+                  performSearch();
+                }
+              });
+              
+              // Filter changes
+              marketFilter.addEventListener("change", function() {
+                currentMarketFilter = this.value;
+                filterVendors();
+              });
+              
+              categoryFilter.addEventListener("change", function() {
+                currentCategoryFilter = this.value;
+                filterVendors();
+              });
+              
+              // Reset filters
+              resetBtn.addEventListener("click", resetFilters);
+            }
+            
+            function performSearch() {
+              currentSearchTerm = searchInput.value.trim().toLowerCase();
+              filterVendors();
+            }
+            
+            function filterVendors() {
+              // Start with all vendors
+              let filtered = [...vendors];
+              
+              // Apply search term filter
+              if (currentSearchTerm) {
+                filtered = filtered.filter(vendor => {
+                  // Search vendor name, products, and category
+                  const nameMatch = vendor.name.toLowerCase().includes(currentSearchTerm);
+                  const productMatch = vendor.products.some(p => 
+                    p.toLowerCase().includes(currentSearchTerm)
+                  );
+                  const categoryMatch = vendor.category.toLowerCase().includes(currentSearchTerm);
+                  const marketMatch = vendor.market.toLowerCase().includes(currentSearchTerm);
+                  
+                  return nameMatch || productMatch || categoryMatch || marketMatch;
+                });
+              }
+              
+              // Apply market filter
+              if (currentMarketFilter) {
+                filtered = filtered.filter(vendor => 
+                  vendor.market === currentMarketFilter
+                );
+              }
+              
+              // Apply category filter
+              if (currentCategoryFilter) {
+                filtered = filtered.filter(vendor => 
+                  vendor.category === currentCategoryFilter
+                );
+              }
+              
+              // Update current vendors and render
+              currentVendors = filtered;
+              renderVendors(currentVendors);
+              
+              // Update active filters display
+              updateActiveFilters();
+            }
+            
+            function resetFilters() {
+              // Reset all filters
+              searchInput.value = "";
+              marketFilter.value = "";
+              categoryFilter.value = "";
+              
+              // Reset state
+              currentSearchTerm = "";
+              currentMarketFilter = "";
+              currentCategoryFilter = "";
+              
+              // Show all vendors
+              currentVendors = [...vendors];
+              renderVendors(currentVendors);
+              
+              // Update active filters display
+              updateActiveFilters();
+            }
+            
+            function updateActiveFilters() {
+              const activeFiltersList = [];
+              
+              if (currentSearchTerm) {
+                activeFiltersList.push(`Search: "${currentSearchTerm}"`);
+              }
+              
+              if (currentMarketFilter) {
+                activeFiltersList.push(`Market: ${currentMarketFilter}`);
+              }
+              
+              if (currentCategoryFilter) {
+                activeFiltersList.push(`Category: ${currentCategoryFilter}`);
+              }
+              
+              if (activeFiltersList.length > 0) {
+                activeFilters.textContent = activeFiltersList.join(" • ");
+              } else {
+                activeFilters.textContent = "Showing all vendors";
+              }
+            }
+            
+            function renderVendors(vendorsToRender) {
+              // Clear existing vendors
+              vendorContainer.innerHTML = "";
+              
+              // Update results count
+              resultsCount.textContent = `${vendorsToRender.length} vendor(s) found`;
+
+// Check if no vendors match the filters
+if (vendorsToRender.length === 0) {
+  const noResultsMessage = document.createElement("div");
+  noResultsMessage.classList.add("no-results");
+  noResultsMessage.textContent = "No vendors match your search or filters.";
+  vendorContainer.appendChild(noResultsMessage);
+  return;
+}
+
+// Render each vendor
+vendorsToRender.forEach(vendor => {
+  const vendorCard = document.createElement("div");
+  vendorCard.classList.add("vendor-card");
+
+  vendorCard.innerHTML = `
+    <h3 class="vendor-name">${vendor.name}</h3>
+    <span class="vendor-category">${vendor.category}</span>
+    <div class="vendor-location">${vendor.location}</div>
+    <div class="vendor-products">
+      <strong>Products:</strong> ${vendor.products.join(", ")}
+    </div>
+    <div class="vendor-contact">
+      <div>
+        <strong>Contact:</strong> ${vendor.contact}<br>
+        <strong>Shop:</strong> ${vendor.shopNumber || vendor.shopAddress}
+      </div>
+      <button class="contact-btn" onclick="alert('Contacting ${vendor.name}...')">Contact</button>
+    </div>
+  `;
+
+  vendorContainer.appendChild(vendorCard);
+});
+}
+});
+</script>
+</body>
+</html>
