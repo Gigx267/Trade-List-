@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -457,19 +458,21 @@
     </div>
 
     <script>
-        // Enhanced Vendor Data with 50 vendors
-        const vendors = [
-          {
-            id: 1,
-            name: "Lightwave Bay Co.",
-            category: "Light Fittings",
-            market: "Alaba International Market",
-            location: "Lagos",
-            products: ["Chandeliers", "Wall brackets", "Spotlights", "Sockets and Switches"],
-            contact: "08177907410",
-            shopNumber: "A27 and 28 Alcobra Plaza"
-          },
-          {
+// Enhanced Vendor Data with 200 vendors
+
+const vendors = [
+  // ---- Your original 50 vendors here ----
+  {
+    id: 1,
+    name: "Lightwave Bay Co.",
+    category: "Light Fittings",
+    market: "Alaba International Market",
+    location: "Lagos",
+    products: ["Chandeliers", "Wall brackets", "Spotlights", "Sockets and Switches"],
+    contact: "08177907410",
+    shopNumber: "A27 and 28 Alcobra Plaza"
+  },
+{
             id: 2,
             name: "OZYBELAS CLASSIC",
             category: "Men's Fashion Retail",
@@ -949,224 +952,2164 @@
             contact: "08123456789",
             shopNumber: "A50 Line 10"
           },
-          {
-            id: 50,
-            name: "Luxury Lingerie",
-            category: "Lingerie",
-            market: "Balogun Market",
-            location: "Lagos",
-            products: ["Nightwear", "Body Shapers"],
-            contact: "08098765432",
-            shopNumber: "D30 Line 15"
-          }
-        ];
+  {
+    id: 50,
+    name: "Luxury Lingerie",
+    category: "Lingerie",
+    market: "Balogun Market",
+    location: "Lagos",
+    products: ["Nightwear", "Body Shapers"],
+    contact: "08098765432",
+    shopNumber: "D30 Line 15"
+  },
+  {
+  id: 51,
+  name: "Ada Fabrics",
+  category: "Textiles",
+  market: "Ariaria International Market",
+  location: "Aba",
+  products: ["Ankara", "Lace", "Voile"],
+  contact: "08034561234",
+  shopNumber: "F12 Block 3"
+},
+{
+  id: 52,
+  name: "Chuks Electronics",
+  category: "Electronics",
+  market: "Alaba International Market",
+  location: "Lagos",
+  products: ["LED TVs", "Home Theaters"],
+  contact: "08111223344",
+  shopNumber: "Z5 Unit 4"
+},
+{
+  id: 53,
+  name: "Zainab Cosmetics",
+  category: "Beauty & Skincare",
+  market: "Wuse Market",
+  location: "Abuja",
+  products: ["Body Lotion", "Makeup Kits"],
+  contact: "08099887766",
+  shopNumber: "H22 Aisle 9"
+},
+{
+  id: 54,
+  name: "Sunny Tech World",
+  category: "Mobile Accessories",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["Chargers", "Power Banks", "Phone Cases"],
+  contact: "08123451234",
+  shopNumber: "G18 Line 6"
+},
+{
+  id: 55,
+  name: "Faith Footwear",
+  category: "Shoes",
+  market: "Eke Awka Market",
+  location: "Awka",
+  products: ["Sandals", "Heels", "Sneakers"],
+  contact: "08077665544",
+  shopNumber: "C2 Lane 4"
+},
+{
+  id: 56,
+  name: "Kingsley Furniture",
+  category: "Home & Living",
+  market: "Kubwa Market",
+  location: "Abuja",
+  products: ["Sofas", "Beds", "Wardrobes"],
+  contact: "08033445566",
+  shopNumber: "T10 Row 2"
+},
+{
+  id: 57,
+  name: "Yusuf Auto Parts",
+  category: "Automobile",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Brake Pads", "Engine Oil", "Batteries"],
+  contact: "07011223355",
+  shopNumber: "M5 Block 9"
+},
+{
+  id: 58,
+  name: "Rose Kiddies World",
+  category: "Children",
+  market: "Oshodi Market",
+  location: "Lagos",
+  products: ["Baby Clothes", "Toys", "Diapers"],
+  contact: "08055667788",
+  shopNumber: "B17 Line 12"
+},
+{
+  id: 59,
+  name: "Ibrahim Watches",
+  category: "Accessories",
+  market: "Wuse Market",
+  location: "Abuja",
+  products: ["Luxury Watches", "Smartwatches"],
+  contact: "08156784321",
+  shopNumber: "R10 Booth 6"
+},
+{
+  id: 60,
+  name: "Mama Oge Foods",
+  category: "Foodstuff",
+  market: "Mile 12 Market",
+  location: "Lagos",
+  products: ["Yam", "Tomatoes", "Dry Fish"],
+  contact: "07088991100",
+  shopNumber: "K2 Line 1"
+},
+{
+  id: 61,
+  name: "Global Plastics",
+  category: "Plastics & Household",
+  market: "Bodija Market",
+  location: "Ibadan",
+  products: ["Buckets", "Plates", "Chairs"],
+  contact: "08100334455",
+  shopNumber: "L30 Unit 8"
+},
+{
+  id: 62,
+  name: "Ngozi Jewelry",
+  category: "Jewelry",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Gold Chains", "Earrings", "Anklets"],
+  contact: "08022334455",
+  shopNumber: "G20 Line 10"
+},
+{
+  id: 63,
+  name: "Ajayi Electricals",
+  category: "Electrical Supplies",
+  market: "Ojo Market",
+  location: "Lagos",
+  products: ["Cables", "Bulbs", "Extension Sockets"],
+  contact: "08144556677",
+  shopNumber: "S3 Row 5"
+},
+{
+  id: 64,
+  name: "Hajara Hijabs",
+  category: "Fashion",
+  market: "Kano Central Market",
+  location: "Kano",
+  products: ["Hijabs", "Abayas"],
+  contact: "08055667799",
+  shopNumber: "A14 Lane 3"
+},
+{
+  id: 65,
+  name: "Fresh Glow Skincare",
+  category: "Beauty & Skincare",
+  market: "Main Market",
+  location: "Benin City",
+  products: ["Soaps", "Face Creams", "Serums"],
+  contact: "08190987654",
+  shopNumber: "E22 Booth 1"
+},
+{
+  id: 66,
+  name: "Obi Tools & Hardware",
+  category: "Hardware",
+  market: "Building Materials Market",
+  location: "Nnewi",
+  products: ["Hammers", "Screws", "Ladders"],
+  contact: "08033221100",
+  shopNumber: "P18 Section 6"
+},
+{
+  id: 67,
+  name: "Treasure Kitchenware",
+  category: "Home & Kitchen",
+  market: "Ita-Faji Market",
+  location: "Lagos",
+  products: ["Pots", "Cutlery", "Trays"],
+  contact: "07022446688",
+  shopNumber: "F5 Unit 3"
+},
+{
+  id: 68,
+  name: "Kelvin Games & Gadgets",
+  category: "Gaming",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["PS5", "Controllers", "Gaming Laptops"],
+  contact: "09012345678",
+  shopNumber: "X10 Line 9"
+},
+{
+  id: 69,
+  name: "Blessing Wears",
+  category: "Clothing",
+  market: "Tejuosho Market",
+  location: "Lagos",
+  products: ["Gowns", "Trousers", "T-Shirts"],
+  contact: "08155664422",
+  shopNumber: "B12 Block A"
+},
+{
+  id: 70,
+  name: "Divine Curtains & Blinds",
+  category: "Interior Decor",
+  market: "Garki Market",
+  location: "Abuja",
+  products: ["Curtains", "Window Blinds"],
+  contact: "08099883322",
+  shopNumber: "Q3 Row 4"
+},
+{
+  id: 71,
+  name: "Nneka Bridal World",
+  category: "Bridal",
+  market: "Onitsha Main Market",
+  location: "Onitsha",
+  products: ["Wedding Gowns", "Veils", "Bridal Accessories"],
+  contact: "08133445566",
+  shopNumber: "C22 Line 11"
+},
+{
+  id: 72,
+  name: "Max Auto Dealers",
+  category: "Automobiles",
+  market: "Berger Auto Market",
+  location: "Lagos",
+  products: ["Tokunbo Cars", "Car Accessories"],
+  contact: "08055667733",
+  shopNumber: "Plot 18 Block B"
+},
+{
+  id: 73,
+  name: "Fola Organic Hub",
+  category: "Organic Products",
+  market: "Oja Oba Market",
+  location: "Ibadan",
+  products: ["Shea Butter", "Black Soap", "Essential Oils"],
+  contact: "08022334466",
+  shopNumber: "J10 Row 3"
+},
+{
+  id: 74,
+  name: "Teejay Printing Press",
+  category: "Printing",
+  market: "Ogba Market",
+  location: "Lagos",
+  products: ["Business Cards", "Banners", "Stickers"],
+  contact: "08109887755",
+  shopNumber: "D12 Complex 2"
+},
+{
+  id: 75,
+  name: "Ugo Carpets",
+  category: "Interior Decor",
+  market: "Eke Market",
+  location: "Enugu",
+  products: ["Rugs", "Wall Carpets", "Doormats"],
+  contact: "07089991122",
+  shopNumber: "H6 Line 5"
+},
+{
+  id: 76,
+  name: "Binta Kitchen Spices",
+  category: "Spices",
+  market: "Sabo Market",
+  location: "Kaduna",
+  products: ["Ginger", "Cloves", "Suya Pepper"],
+  contact: "08033445522",
+  shopNumber: "S15 Section 9"
+},
+{
+  id: 77,
+  name: "Felix Auto Paints",
+  category: "Automotive",
+  market: "Nnewi Auto Market",
+  location: "Nnewi",
+  products: ["Car Paints", "Spray Guns"],
+  contact: "08122335577",
+  shopNumber: "Block C4 Bay 7"
+},
+{
+  id: 78,
+  name: "Lilian Bags & Purses",
+  category: "Fashion Accessories",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Purses", "Tote Bags", "Crossbody Bags"],
+  contact: "07077889900",
+  shopNumber: "Z20 Lane 14"
+},
+{
+  id: 79,
+  name: "Zee Herbal Shop",
+  category: "Health",
+  market: "Yar’Adua Market",
+  location: "Kano",
+  products: ["Detox Tea", "Herbal Mixes", "Supplements"],
+  contact: "08112233445",
+  shopNumber: "Herbal Zone 3"
+},
+{
+  id: 80,
+  name: "Kareem Leather Works",
+  category: "Leather Goods",
+  market: "Ibadan Leather Market",
+  location: "Ibadan",
+  products: ["Belts", "Wallets", "Sandals"],
+  contact: "07045678910",
+  shopNumber: "W8 Unit B"
+},
+{
+  id: 81,
+  name: "Fresh Catch Seafood",
+  category: "Seafood",
+  market: "Iyana Iba Market",
+  location: "Lagos",
+  products: ["Crabs", "Prawns", "Tilapia"],
+  contact: "08033445511",
+  shopNumber: "Fish Section 6"
+},
+{
+  id: 82,
+  name: "Debbie School Supplies",
+  category: "Stationery",
+  market: "Ogbete Market",
+  location: "Enugu",
+  products: ["Exercise Books", "Pencils", "Backpacks"],
+  contact: "09087654321",
+  shopNumber: "A4 Row 1"
+},
+{
+  id: 83,
+  name: "Lanre Power Tools",
+  category: "Industrial",
+  market: "Building Materials Market",
+  location: "Abuja",
+  products: ["Generators", "Drills", "Cutting Machines"],
+  contact: "08119993322",
+  shopNumber: "Tool Zone 8"
+},
+{
+  id: 84,
+  name: "Grace Baby World",
+  category: "Children",
+  market: "Ekeoha Market",
+  location: "Aba",
+  products: ["Baby Strollers", "Clothes", "Feeding Bottles"],
+  contact: "08055661234",
+  shopNumber: "C18 Block 9"
+},
+{
+  id: 85,
+  name: "Daniel Agro Store",
+  category: "Agriculture",
+  market: "Zaria Market",
+  location: "Zaria",
+  products: ["Fertilizer", "Pesticides", "Feeds"],
+  contact: "07045566778",
+  shopNumber: "Farm Lane 5"
+},
+{
+  id: 86,
+  name: "Oyinade Perfumes",
+  category: "Perfumes",
+  market: "Tejuosho Market",
+  location: "Lagos",
+  products: ["Body Spray", "Fragrance Oils", "Eau de Parfum"],
+  contact: "08133224455",
+  shopNumber: "F3 Scent Row"
+},
+{
+  id: 87,
+  name: "New Age Phones",
+  category: "Mobile Phones",
+  market: "Saka Tinubu Plaza",
+  location: "Lagos",
+  products: ["Samsung", "Infinix", "Techno"],
+  contact: "08077668899",
+  shopNumber: "L5 Floor 1"
+},
+{
+  id: 88,
+  name: "Chris Paints & Tools",
+  category: "Building Materials",
+  market: "Dei Dei Market",
+  location: "Abuja",
+  products: ["Emulsion Paint", "Brushes", "Rollers"],
+  contact: "08099884433",
+  shopNumber: "B15 Paint Lane"
+},
+{
+  id: 89,
+  name: "Esther Event Rentals",
+  category: "Event Services",
+  market: "Alaba Rago",
+  location: "Lagos",
+  products: ["Chairs", "Tables", "Canopies"],
+  contact: "08100991122",
+  shopNumber: "Rental Zone 3"
+},
+{
+  id: 90,
+  name: "Tosin Fabrics",
+  category: "Textiles",
+  market: "Gbagi Market",
+  location: "Ibadan",
+  products: ["Silk", "Chiffon", "Atiku"],
+  contact: "07022334411",
+  shopNumber: "Textile Row 6"
+},
+{
+  id: 91,
+  name: "Uche Motors",
+  category: "Automobiles",
+  market: "Aba Motor Market",
+  location: "Aba",
+  products: ["Car Batteries", "Spare Tyres"],
+  contact: "08133449900",
+  shopNumber: "Motor Parts 10"
+},
+{
+  id: 92,
+  name: "Nura Islamic Books",
+  category: "Books",
+  market: "Sabo Market",
+  location: "Kano",
+  products: ["Qur'an", "Islamic Literature", "Prayer Mats"],
+  contact: "08066778899",
+  shopNumber: "Book Lane 2"
+},
+{
+  id: 93,
+  name: "Lovina Fashion House",
+  category: "Clothing",
+  market: "Ochanja Market",
+  location: "Onitsha",
+  products: ["Skirts", "Jumpsuits", "Kaftans"],
+  contact: "08055667788",
+  shopNumber: "D10 Line 20"
+},
+{
+  id: 94,
+  name: "Emeka Electricals",
+  category: "Electronics",
+  market: "Main Market",
+  location: "Onitsha",
+  products: ["Freezers", "Fans", "Stabilizers"],
+  contact: "08122446688",
+  shopNumber: "E30 Electronics Wing"
+},
+{
+  id: 95,
+  name: "Halima Home Essentials",
+  category: "Home & Living",
+  market: "Jos Main Market",
+  location: "Jos",
+  products: ["Bedsheets", "Mats", "Pillows"],
+  contact: "08077665522",
+  shopNumber: "Block B7"
+},
+{
+  id: 96,
+  name: "Suleman Steel & Rods",
+  category: "Construction",
+  market: "Kano Building Market",
+  location: "Kano",
+  products: ["Steel Rods", "Cement", "Binding Wire"],
+  contact: "08133221144",
+  shopNumber: "Iron Row 4"
+},
+{
+  id: 97,
+  name: "Chidi Computer Solutions",
+  category: "ICT",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["Laptops", "Software", "Printers"],
+  contact: "08119998877",
+  shopNumber: "C30 Line 3"
+},
+{
+  id: 98,
+  name: "Princess Wigs",
+  category: "Hair & Beauty",
+  market: "Trade Fair Complex",
+  location: "Lagos",
+  products: ["Human Hair", "Wig Caps", "Hair Oil"],
+  contact: "09011223344",
+  shopNumber: "Hair Zone D5"
+},
+{
+  id: 99,
+  name: "Deji Sports Hub",
+  category: "Sports",
+  market: "Sura Shopping Complex",
+  location: "Lagos",
+  products: ["Jerseys", "Football Boots", "Gym Gear"],
+  contact: "07044556677",
+  shopNumber: "Unit A2"
+},
+{
+  id: 100,
+  name: "Mama T Frozen Foods",
+  category: "Food",
+  market: "Ikeja Market",
+  location: "Lagos",
+  products: ["Chicken", "Fish", "Snails"],
+  contact: "08033445500",
+  shopNumber: "Frozen Lane 4"
+},
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const vendorContainer = document.querySelector(".vendor-container");
-            const searchInput = document.getElementById("search-input");
-            const searchBtn = document.getElementById("search-btn");
-            const marketFilter = document.getElementById("market-filter");
-            const categoryFilter = document.getElementById("category-filter");
-            const resetBtn = document.getElementById("reset-filters");
-            const resultsCount = document.getElementById("results-count");
-            const activeFilters = document.getElementById("active-filters");
-            
-            let currentVendors = [];
-            let currentSearchTerm = "";
-            let currentMarketFilter = "";
-            let currentCategoryFilter = "";
-            
-            // Initialize the app
-            initMarketplace();
-            
-            function initMarketplace() {
-              // Render initial vendors
-              currentVendors = [...vendors];
-              renderVendors(currentVendors);
-              
-              // Populate filter dropdowns
-              populateFilters();
-              
-              // Set up event listeners
-              setupEventListeners();
-            }
-            
-            function populateFilters() {
-              // Get unique markets and categories
-              const markets = [...new Set(vendors.map(v => v.market))];
-              const categories = [...new Set(vendors.map(v => v.category))];
-              
-              // Populate market filter
-              markets.sort().forEach(market => {
-                const option = document.createElement("option");
-                option.value = market;
-                option.textContent = market;
-                marketFilter.appendChild(option);
-              });
-              
-              // Populate category filter
-              categories.sort().forEach(category => {
-                const option = document.createElement("option");
-                option.value = category;
-                option.textContent = category;
-                categoryFilter.appendChild(option);
-              });
-            }
-            
-            function setupEventListeners() {
-              // Search button click
-              searchBtn.addEventListener("click", performSearch);
-              
-              // Enter key in search input
-              searchInput.addEventListener("keyup", function(e) {
-                if (e.key === "Enter") {
-                  performSearch();
-                }
-              });
-              
-              // Filter changes
-              marketFilter.addEventListener("change", function() {
-                currentMarketFilter = this.value;
-                filterVendors();
-              });
-              
-              categoryFilter.addEventListener("change", function() {
-                currentCategoryFilter = this.value;
-                filterVendors();
-              });
-              
-              // Reset filters
-              resetBtn.addEventListener("click", resetFilters);
-            }
-            
-            function performSearch() {
-              currentSearchTerm = searchInput.value.trim().toLowerCase();
-              filterVendors();
-            }
-            
-            function filterVendors() {
-              // Start with all vendors
-              let filtered = [...vendors];
-              
-              // Apply search term filter
-              if (currentSearchTerm) {
-                filtered = filtered.filter(vendor => {
-                  // Search vendor name, products, and category
-                  const nameMatch = vendor.name.toLowerCase().includes(currentSearchTerm);
-                  const productMatch = vendor.products.some(p => 
-                    p.toLowerCase().includes(currentSearchTerm)
-                  );
-                  const categoryMatch = vendor.category.toLowerCase().includes(currentSearchTerm);
-                  const marketMatch = vendor.market.toLowerCase().includes(currentSearchTerm);
-                  
-                  return nameMatch || productMatch || categoryMatch || marketMatch;
-                });
-              }
-              
-              // Apply market filter
-              if (currentMarketFilter) {
-                filtered = filtered.filter(vendor => 
-                  vendor.market === currentMarketFilter
-                );
-              }
-              
-              // Apply category filter
-              if (currentCategoryFilter) {
-                filtered = filtered.filter(vendor => 
-                  vendor.category === currentCategoryFilter
-                );
-              }
-              
-              // Update current vendors and render
-              currentVendors = filtered;
-              renderVendors(currentVendors);
-              
-              // Update active filters display
-              updateActiveFilters();
-            }
-            
-            function resetFilters() {
-              // Reset all filters
-              searchInput.value = "";
-              marketFilter.value = "";
-              categoryFilter.value = "";
-              
-              // Reset state
-              currentSearchTerm = "";
-              currentMarketFilter = "";
-              currentCategoryFilter = "";
-              
-              // Show all vendors
-              currentVendors = [...vendors];
-              renderVendors(currentVendors);
-              
-              // Update active filters display
-              updateActiveFilters();
-            }
-            
-            function updateActiveFilters() {
-              const activeFiltersList = [];
-              
-              if (currentSearchTerm) {
-                activeFiltersList.push(`Search: "${currentSearchTerm}"`);
-              }
-              
-              if (currentMarketFilter) {
-                activeFiltersList.push(`Market: ${currentMarketFilter}`);
-              }
-              
-              if (currentCategoryFilter) {
-                activeFiltersList.push(`Category: ${currentCategoryFilter}`);
-              }
-              
-              if (activeFiltersList.length > 0) {
-                activeFilters.textContent = activeFiltersList.join(" • ");
-              } else {
-                activeFilters.textContent = "Showing all vendors";
-              }
-            }
-            
-            function renderVendors(vendorsToRender) {
-              // Clear existing vendors
-              vendorContainer.innerHTML = "";
-              
-              // Update results count
-              resultsCount.textContent = `${vendorsToRender.length} vendor(s) found`;
+{
+  id: 100,
+  name: "Abiola Ventures",
+  category: "Automobile",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Car Stereos", "Headlights"],
+  contact: "08150515253",
+  shopNumber: "A20 Line 9"
+},
+{
+  id: 101,
+  name: "Golden Touch Tailors",
+  category: "Tailoring",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Native Wears", "Corporate Suits"],
+  contact: "08160016253",
+  shopNumber: "B21 Lane 2"
+},
+{
+  id: 102,
+  name: "Ebere Frozen Foods",
+  category: "Frozen Foods",
+  market: "Ekeoha Market",
+  location: "Aba",
+  products: ["Chicken", "Fish", "Turkey"],
+  contact: "08061234567",
+  shopNumber: "C10 Row 7"
+},
+{
+  id: 103,
+  name: "Sani Electricals",
+  category: "Electricals",
+  market: "Central Market",
+  location: "Kaduna",
+  products: ["Sockets", "Wires", "Bulbs"],
+  contact: "08172345678",
+  shopNumber: "D19 Block 3"
+},
+{
+  id: 104,
+  name: "Favour Shoes",
+  category: "Footwear",
+  market: "Ariaria International Market",
+  location: "Aba",
+  products: ["Leather Shoes", "Boots"],
+  contact: "08183456789",
+  shopNumber: "E08 Line 12"
+},
+{
+  id: 105,
+  name: "Kano Drapes",
+  category: "Curtains",
+  market: "Sabon Gari Market",
+  location: "Kano",
+  products: ["Window Blinds", "Curtain Rods"],
+  contact: "08194567890",
+  shopNumber: "F06 Lane 14"
+},
+{
+  id: 106,
+  name: "Precious Kids",
+  category: "Children's Wear",
+  market: "Ogbete Main Market",
+  location: "Enugu",
+  products: ["Baby Shoes", "Caps"],
+  contact: "08015678901",
+  shopNumber: "G12 Section 2"
+},
+{
+  id: 107,
+  name: "Chukwudi Hardware",
+  category: "Hardware",
+  market: "Nkwo Nnewi Market",
+  location: "Nnewi",
+  products: ["Screwdrivers", "Drills"],
+  contact: "08126789012",
+  shopNumber: "H01 Block 6"
+},
+{
+  id: 108,
+  name: "Aisha Hair Palace",
+  category: "Hair Products",
+  market: "Wuse Market",
+  location: "Abuja",
+  products: ["Wigs", "Hair Cream"],
+  contact: "08037890123",
+  shopNumber: "I16 Lane 9"
+},
+{
+  id: 109,
+  name: "Victory Stationery",
+  category: "Stationery",
+  market: "Tejuosho Market",
+  location: "Lagos",
+  products: ["Markers", "Staplers", "Folders"],
+  contact: "08148901234",
+  shopNumber: "J05 Row 5"
+},
+{
+  id: 110,
+  name: "Ahmed's Spares",
+  category: "Auto Parts",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Brake Pads", "Spark Plugs"],
+  contact: "08059012345",
+  shopNumber: "K10 Line 13"
+},
+{
+  id: 111,
+  name: "Mama Chinyere Foods",
+  category: "Foodstuff",
+  market: "Bodija Market",
+  location: "Ibadan",
+  products: ["Beans", "Garri", "Melon"],
+  contact: "08160123456",
+  shopNumber: "L18 Row 2"
+},
+{
+  id: 112,
+  name: "Just Phones",
+  category: "Mobile Phones",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["Nokia", "Gionee", "Tecno"],
+  contact: "08071234567",
+  shopNumber: "M27 Block 1"
+},
+{
+  id: 113,
+  name: "Onome's Accessories",
+  category: "Accessories",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Necklaces", "Rings"],
+  contact: "08182345678",
+  shopNumber: "N24 Line 3"
+},
+{
+  id: 114,
+  name: "Blessed Ventures",
+  category: "Provisions",
+  market: "Eke Awka Market",
+  location: "Awka",
+  products: ["Beverages", "Milo", "Sugar"],
+  contact: "08093456789",
+  shopNumber: "O07 Section 4"
+},
+{
+  id: 115,
+  name: "Chisom Boutique",
+  category: "Women's Wear",
+  market: "Wuse Market",
+  location: "Abuja",
+  products: ["Jackets", "Dresses"],
+  contact: "08104567890",
+  shopNumber: "P13 Block 7"
+},
+{
+  id: 116,
+  name: "Obinna's Carpentry",
+  category: "Carpentry",
+  market: "Ochanja Market",
+  location: "Onitsha",
+  products: ["Wardrobes", "Bookshelves"],
+  contact: "08115678901",
+  shopNumber: "Q19 Row 8"
+},
+{
+  id: 117,
+  name: "Zara's Perfumes",
+  category: "Perfumes",
+  market: "Ojuelegba Market",
+  location: "Lagos",
+  products: ["Body Spray", "Oil Perfume"],
+  contact: "08026789012",
+  shopNumber: "R04 Lane 10"
+},
+{
+  id: 118,
+  name: "Abubakar Grains",
+  category: "Grains",
+  market: "Singer Market",
+  location: "Kano",
+  products: ["Wheat", "Rice"],
+  contact: "08137890123",
+  shopNumber: "S22 Section 1"
+},
+{
+  id: 119,
+  name: "Faith Supermart",
+  category: "Supermart",
+  market: "New Benin Market",
+  location: "Benin City",
+  products: ["Toiletries", "Snacks"],
+  contact: "08048901234",
+  shopNumber: "T03 Block 5"
+},
+{
+  id: 120,
+  name: "Damilola Computers",
+  category: "Computers",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["Monitors", "Motherboards"],
+  contact: "08159012345",
+  shopNumber: "U16 Lane 2"
+},
+{
+  id: 121,
+  name: "Peaceful Bedding",
+  category: "Beddings",
+  market: "Ogbete Main Market",
+  location: "Enugu",
+  products: ["Pillows", "Blankets"],
+  contact: "08160123456",
+  shopNumber: "V19 Row 6"
+},
+{
+  id: 122,
+  name: "Divine Jewelry",
+  category: "Jewelry",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Silver Chains", "Bracelets"],
+  contact: "08071234567",
+  shopNumber: "W08 Section 3"
+},
+{
+  id: 123,
+  name: "Modupe Lingerie",
+  category: "Lingerie",
+  market: "Tejuosho Market",
+  location: "Lagos",
+  products: ["Panties", "Bras"],
+  contact: "08182345678",
+  shopNumber: "X22 Block 2"
+},
+{
+  id: 124,
+  name: "Adekunle Paint",
+  category: "Paints",
+  market: "Dei Dei Market",
+  location: "Abuja",
+  products: ["Emulsion Paint", "Spray Paint"],
+  contact: "08093456789",
+  shopNumber: "Y04 Lane 8"
+},
+{
+  id: 125,
+  name: "Rashida Couture",
+  category: "Women's Wear",
+  market: "Sabon Gari Market",
+  location: "Kano",
+  products: ["Hijabs", "Long Gowns"],
+  contact: "08104567890",
+  shopNumber: "Z16 Row 11"
+},
+{
+  id: 126,
+  name: "Emmanuel Shoes",
+  category: "Footwear",
+  market: "Oja Oba Market",
+  location: "Akure",
+  products: ["Sneakers", "Sandals"],
+  contact: "08015678901",
+  shopNumber: "A11 Section 8"
+},
+{
+  id: 127,
+  name: "Ogechi Spices",
+  category: "Spices",
+  market: "Mile 12 Market",
+  location: "Lagos",
+  products: ["Curry Powder", "Paprika"],
+  contact: "08126789012",
+  shopNumber: "B03 Lane 1"
+},
+{
+  id: 128,
+  name: "Godwin Leather",
+  category: "Leather Goods",
+  market: "Ariaria International Market",
+  location: "Aba",
+  products: ["Leather Jackets", "Belts"],
+  contact: "08037890123",
+  shopNumber: "C17 Block 6"
+},
+{
+  id: 129,
+  name: "Mama Ope's Groceries",
+  category: "Groceries",
+  market: "Oja-Oba Market",
+  location: "Ibadan",
+  products: ["Yam Flour", "Beans"],
+  contact: "08148901234",
+  shopNumber: "D12 Row 5"
+},
+{
+  id: 130,
+  name: "Chisom's Books",
+  category: "Books",
+  market: "Ojuelegba Market",
+  location: "Lagos",
+  products: ["Story Books", "Journals"],
+  contact: "08059012345",
+  shopNumber: "E19 Block 4"
+},
+{
+  id: 131,
+  name: "Promise Ventures",
+  category: "Building Materials",
+  market: "Nkwo Nnewi Market",
+  location: "Nnewi",
+  products: ["Tiles", "Cement"],
+  contact: "08160123456",
+  shopNumber: "F04 Section 2"
+},
+{
+  id: 132,
+  name: "Ibrahim's Plastics",
+  category: "Plasticwares",
+  market: "Ogbete Main Market",
+  location: "Enugu",
+  products: ["Basins", "Buckets"],
+  contact: "08071234567",
+  shopNumber: "G08 Lane 7"
+},
+{
+  id: 133,
+  name: "Eloho's Home Decor",
+  category: "Home Decor",
+  market: "Garki Modern Market",
+  location: "Abuja",
+  products: ["Wall Clocks", "Photo Frames"],
+  contact: "08182345678",
+  shopNumber: "H15 Row 3"
+},
+{
+  id: 134,
+  name: "Mama Peace Kitchen",
+  category: "Cooked Food",
+  market: "Ochanja Market",
+  location: "Onitsha",
+  products: ["Egusi Soup", "Yam Porridge"],
+  contact: "08093456789",
+  shopNumber: "I21 Block 8"
+},
+{
+  id: 135,
+  name: "Aliyu Solar",
+  category: "Solar Energy",
+  market: "Singer Market",
+  location: "Kano",
+  products: ["Inverters", "Solar Lamps"],
+  contact: "08104567890",
+  shopNumber: "J09 Lane 13"
+},
+{
+  id: 136,
+  name: "Queen's Cosmetics",
+  category: "Cosmetics",
+  market: "Central Market",
+  location: "Kaduna",
+  products: ["Powder", "Body Lotions"],
+  contact: "08015678901",
+  shopNumber: "K24 Section 6"
+},
+{
+  id: 137,
+  name: "Chibuzo's Motors",
+  category: "Automobile",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Car Mirrors", "Radiators"],
+  contact: "08126789012",
+  shopNumber: "L13 Block 9"
+},
+{
+  id: 138,
+  name: "Esther's Fruits",
+  category: "Fruits & Vegetables",
+  market: "Mile 12 Market",
+  location: "Lagos",
+  products: ["Bananas", "Cucumber"],
+  contact: "08037890123",
+  shopNumber: "M01 Row 4"
+},
+{
+  id: 139,
+  name: "Rita's Pastries",
+  category: "Bakery",
+  market: "Ojuelegba Market",
+  location: "Lagos",
+  products: ["Cake", "Chin Chin"],
+  contact: "08148901234",
+  shopNumber: "N17 Block 2"
+},
+{
+  id: 140,
+  name: "Ogbonna Medicals",
+  category: "Medical Supplies",
+  market: "Ekeoha Market",
+  location: "Aba",
+  products: ["Thermometers", "Syringes"],
+  contact: "08059012345",
+  shopNumber: "O04 Section 1"
+},
+{
+  id: 141,
+  name: "Fatima's Textiles",
+  category: "Textiles",
+  market: "Katako Market",
+  location: "Jos",
+  products: ["Atiku", "Kampala"],
+  contact: "08160123456",
+  shopNumber: "P22 Lane 10"
+},
+{
+  id: 142,
+  name: "Olu Arts",
+  category: "Arts & Crafts",
+  market: "Tejuosho Market",
+  location: "Lagos",
+  products: ["Beads", "Paintings"],
+  contact: "08071234567",
+  shopNumber: "Q18 Block 6"
+},
+{
+  id: 143,
+  name: "Uzochukwu's Bakery",
+  category: "Bakery",
+  market: "Oja-Oba Market",
+  location: "Ibadan",
+  products: ["Bread", "Buns"],
+  contact: "08182345678",
+  shopNumber: "R07 Row 8"
+},
+{
+  id: 144,
+  name: "Chinedu Gadgets",
+  category: "Mobile Accessories",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["Power Banks", "Screen Guards"],
+  contact: "08093456789",
+  shopNumber: "S15 Lane 2"
+},
+{
+  id: 145,
+  name: "Blessing's Pet World",
+  category: "Pet Supplies",
+  market: "Mile 3 Market",
+  location: "Port Harcourt",
+  products: ["Fish Food", "Dog Chains"],
+  contact: "08104567890",
+  shopNumber: "T12 Block 5"
+},
+{
+  id: 146,
+  name: "Emeka's Carpentry",
+  category: "Carpentry",
+  market: "Eke Awka Market",
+  location: "Awka",
+  products: ["Chairs", "Benches"],
+  contact: "08015678901",
+  shopNumber: "U24 Row 9"
+},
+{
+  id: 147,
+  name: "Rukayat's Boutique",
+  category: "Women's Wear",
+  market: "New Benin Market",
+  location: "Benin City",
+  products: ["Jumpsuits", "Tops"],
+  contact: "08126789012",
+  shopNumber: "V18 Section 4"
+},
+{
+  id: 148,
+  name: "Smart Tech Hub",
+  category: "Electronics",
+  market: "Alaba International Market",
+  location: "Lagos",
+  products: ["Routers", "Modems"],
+  contact: "08037890123",
+  shopNumber: "W20 Lane 7"
+},
+{
+  id: 149,
+  name: "Amina Provisions",
+  category: "Provisions",
+  market: "Katako Market",
+  location: "Jos",
+  products: ["Cornflakes", "Custard"],
+  contact: "08148901234",
+  shopNumber: "X13 Block 3"
+},
+{
+  id: 150,
+  name: "Itsede Ventures",
+  category: "Building Materials",
+  market: "Dei Dei Market",
+  location: "Abuja",
+  products: ["Aluminium Sheets", "Iron Rods"],
+  contact: "08059012345",
+  shopNumber: "Y05 Section 9"
+},
+{
+  id: 151,
+  name: "Ezinne Boutique",
+  category: "Women's Wear",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Dresses", "Scarves"],
+  contact: "08060123456",
+  shopNumber: "A01 Line 5"
+},
+{
+  id: 152,
+  name: "Unity Grains",
+  category: "Grains",
+  market: "Bodija Market",
+  location: "Ibadan",
+  products: ["Beans", "Maize", "Rice"],
+  contact: "08071234567",
+  shopNumber: "B15 Row 3"
+},
+{
+  id: 153,
+  name: "Alpha Electronics",
+  category: "Electronics",
+  market: "Alaba International Market",
+  location: "Lagos",
+  products: ["DVD Players", "Home Theatre"],
+  contact: "08182345678",
+  shopNumber: "C20 Block 1"
+},
+{
+  id: 154,
+  name: "Abdul Furniture",
+  category: "Furniture",
+  market: "Sabon Gari Market",
+  location: "Kano",
+  products: ["Tables", "Chairs", "Beds"],
+  contact: "08193456789",
+  shopNumber: "D12 Lane 8"
+},
+{
+  id: 155,
+  name: "Glory Stationery",
+  category: "Stationery",
+  market: "Ogbete Main Market",
+  location: "Enugu",
+  products: ["A4 Paper", "Envelopes"],
+  contact: "08014567890",
+  shopNumber: "E08 Section 2"
+},
+{
+  id: 156,
+  name: "Umaru Spices",
+  category: "Spices",
+  market: "Singer Market",
+  location: "Kano",
+  products: ["Ginger", "Turmeric"],
+  contact: "08125678901",
+  shopNumber: "F13 Row 4"
+},
+{
+  id: 157,
+  name: "Hope Medicals",
+  category: "Medical Supplies",
+  market: "Oja-Oba Market",
+  location: "Ibadan",
+  products: ["Bandages", "Pain Relievers"],
+  contact: "08036789012",
+  shopNumber: "G11 Block 7"
+},
+{
+  id: 158,
+  name: "Chika's Footwear",
+  category: "Footwear",
+  market: "Ariaria International Market",
+  location: "Aba",
+  products: ["Slippers", "Sandals"],
+  contact: "08147890123",
+  shopNumber: "H17 Lane 2"
+},
+{
+  id: 159,
+  name: "Blessing Home Decor",
+  category: "Home Decor",
+  market: "Garki Modern Market",
+  location: "Abuja",
+  products: ["Blinds", "Rugs"],
+  contact: "08058901234",
+  shopNumber: "I09 Row 10"
+},
+{
+  id: 160,
+  name: "Tunde's Phones",
+  category: "Mobile Phones",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["iPhone", "Samsung"],
+  contact: "08169012345",
+  shopNumber: "J15 Block 3"
+},
+{
+  id: 161,
+  name: "Chinwe's Kitchen",
+  category: "Cooked Food",
+  market: "Ochanja Market",
+  location: "Onitsha",
+  products: ["Pepper Soup", "Fried Rice"],
+  contact: "08070123456",
+  shopNumber: "K07 Section 8"
+},
+{
+  id: 162,
+  name: "Ajoke Textiles",
+  category: "Textiles",
+  market: "Tejuosho Market",
+  location: "Lagos",
+  products: ["Aso Oke", "Voile Lace"],
+  contact: "08181234567",
+  shopNumber: "L19 Row 6"
+},
+{
+  id: 163,
+  name: "Emeka Motors",
+  category: "Auto Parts",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Windshields", "Filters"],
+  contact: "08092345678",
+  shopNumber: "M02 Lane 5"
+},
+{
+  id: 164,
+  name: "Halima Beauty",
+  category: "Cosmetics",
+  market: "Central Market",
+  location: "Kaduna",
+  products: ["Nail Polish", "Lip Gloss"],
+  contact: "08103456789",
+  shopNumber: "N21 Block 11"
+},
+{
+  id: 165,
+  name: "Musa Leather",
+  category: "Leather Goods",
+  market: "Katako Market",
+  location: "Jos",
+  products: ["Leather Wallets", "Belts"],
+  contact: "08014567891",
+  shopNumber: "O23 Row 1"
+},
+{
+  id: 166,
+  name: "Faithful Supermart",
+  category: "Supermart",
+  market: "New Benin Market",
+  location: "Benin City",
+  products: ["Tomato Paste", "Cereals"],
+  contact: "08125678902",
+  shopNumber: "P12 Section 4"
+},
+{
+  id: 167,
+  name: "Glorious Beddings",
+  category: "Beddings",
+  market: "Ogbete Main Market",
+  location: "Enugu",
+  products: ["Bed Covers", "Pillows"],
+  contact: "08036789013",
+  shopNumber: "Q06 Lane 3"
+},
+{
+  id: 168,
+  name: "Mama Joy Provisions",
+  category: "Provisions",
+  market: "Mile 12 Market",
+  location: "Lagos",
+  products: ["Milk", "Sugar", "Bread"],
+  contact: "08147890124",
+  shopNumber: "R13 Row 7"
+},
+{
+  id: 169,
+  name: "Classic Books",
+  category: "Books",
+  market: "Ojuelegba Market",
+  location: "Lagos",
+  products: ["Exercise Books", "Novels"],
+  contact: "08058901235",
+  shopNumber: "S14 Block 6"
+},
+{
+  id: 170,
+  name: "Olu's Hardware",
+  category: "Hardware",
+  market: "Eke Awka Market",
+  location: "Awka",
+  products: ["Hammers", "Nails"],
+  contact: "08169012346",
+  shopNumber: "T18 Section 9"
+},
+{
+  id: 171,
+  name: "Blessed Ventures",
+  category: "Provision",
+  market: "Oja Oba Market",
+  location: "Akure",
+  products: ["Beverages", "Biscuits"],
+  contact: "08070123457",
+  shopNumber: "U10 Lane 2"
+},
+{
+  id: 172,
+  name: "Queen's Couture",
+  category: "Women's Wear",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Skirts", "Blouses"],
+  contact: "08181234568",
+  shopNumber: "V16 Row 12"
+},
+{
+  id: 173,
+  name: "Chukwuma Bakery",
+  category: "Bakery",
+  market: "Ekeoha Market",
+  location: "Aba",
+  products: ["Bread", "Cookies"],
+  contact: "08092345679",
+  shopNumber: "W11 Block 4"
+},
+{
+  id: 174,
+  name: "Rashidat's Jewelry",
+  category: "Jewelry",
+  market: "Sabon Gari Market",
+  location: "Kano",
+  products: ["Gold Earrings", "Bracelets"],
+  contact: "08103456780",
+  shopNumber: "X07 Lane 10"
+},
+{
+  id: 175,
+  name: "Chidera Accessories",
+  category: "Accessories",
+  market: "Onitsha Main Market",
+  location: "Onitsha",
+  products: ["Belts", "Hats"],
+  contact: "08014567892",
+  shopNumber: "Y25 Row 6"
+},
+{
+  id: 176,
+  name: "Victory Computers",
+  category: "Computers",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["Desktops", "Laptops"],
+  contact: "08125678903",
+  shopNumber: "Z05 Block 2"
+},
+{
+  id: 177,
+  name: "Yusuf Grains",
+  category: "Grains",
+  market: "Singer Market",
+  location: "Kano",
+  products: ["Rice", "Millet"],
+  contact: "08036789014",
+  shopNumber: "A18 Lane 1"
+},
+{
+  id: 178,
+  name: "Olawale's Autos",
+  category: "Auto Parts",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Tyres", "Batteries"],
+  contact: "08147890125",
+  shopNumber: "B03 Row 2"
+},
+{
+  id: 179,
+  name: "Deborah's Hair",
+  category: "Hair Products",
+  market: "Tejuosho Market",
+  location: "Lagos",
+  products: ["Weaves", "Conditioner"],
+  contact: "08058901236",
+  shopNumber: "C14 Section 7"
+},
+{
+  id: 180,
+  name: "Best Paints",
+  category: "Paints",
+  market: "Dei Dei Market",
+  location: "Abuja",
+  products: ["Gloss Paint", "Emulsion Paint"],
+  contact: "08169012347",
+  shopNumber: "D02 Lane 11"
+},
+{
+  id: 181,
+  name: "Okezie Plastics",
+  category: "Plasticwares",
+  market: "Ariaria International Market",
+  location: "Aba",
+  products: ["Plastic Chairs", "Buckets"],
+  contact: "08070123458",
+  shopNumber: "E21 Row 3"
+},
+{
+  id: 182,
+  name: "Chinonso's Pets",
+  category: "Pet Supplies",
+  market: "Ekeoha Market",
+  location: "Aba",
+  products: ["Dog Food", "Fish Bowls"],
+  contact: "08181234569",
+  shopNumber: "F16 Block 7"
+},
+{
+  id: 183,
+  name: "Mama Titi Foods",
+  category: "Foodstuff",
+  market: "Mile 12 Market",
+  location: "Lagos",
+  products: ["Pepper", "Beans"],
+  contact: "08092345680",
+  shopNumber: "G09 Lane 5"
+},
+{
+  id: 184,
+  name: "Prince Solar",
+  category: "Solar Energy",
+  market: "Onitsha Main Market",
+  location: "Onitsha",
+  products: ["Solar Panels", "Batteries"],
+  contact: "08103456781",
+  shopNumber: "H14 Row 7"
+},
+{
+  id: 185,
+  name: "Bola's Books",
+  category: "Books",
+  market: "Ojuelegba Market",
+  location: "Lagos",
+  products: ["Textbooks", "Magazines"],
+  contact: "08014567893",
+  shopNumber: "I20 Block 1"
+},
+{
+  id: 186,
+  name: "Nkechi's Pastries",
+  category: "Bakery",
+  market: "Ogbete Main Market",
+  location: "Enugu",
+  products: ["Meat Pie", "Buns"],
+  contact: "08125678904",
+  shopNumber: "J23 Row 6"
+},
+{
+  id: 187,
+  name: "Adamu's Carpentry",
+  category: "Carpentry",
+  market: "Katako Market",
+  location: "Jos",
+  products: ["Doors", "Tables"],
+  contact: "08036789015",
+  shopNumber: "K06 Section 2"
+},
+{
+  id: 188,
+  name: "Grace Beauty",
+  category: "Beauty Products",
+  market: "Central Market",
+  location: "Kaduna",
+  products: ["Makeup Kit", "Face Cream"],
+  contact: "08147890126",
+  shopNumber: "L13 Lane 8"
+},
+{
+  id: 189,
+  name: "Kareem Watches",
+  category: "Watches",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Smart Watches", "Analog Watches"],
+  contact: "08058901237",
+  shopNumber: "M22 Row 4"
+},
+{
+  id: 190,
+  name: "Mama Salisu Groceries",
+  category: "Groceries",
+  market: "Sabon Gari Market",
+  location: "Kano",
+  products: ["Sugar", "Rice"],
+  contact: "08169012348",
+  shopNumber: "N10 Block 6"
+},
+{
+  id: 191,
+  name: "Ogbonna Ventures",
+  category: "Building Materials",
+  market: "Nkwo Nnewi Market",
+  location: "Nnewi",
+  products: ["Cement", "Tiles"],
+  contact: "08070123459",
+  shopNumber: "O18 Lane 9"
+},
+{
+  id: 192,
+  name: "Mercy's Boutique",
+  category: "Children's Wear",
+  market: "Wuse Market",
+  location: "Abuja",
+  products: ["T-Shirts", "Shorts"],
+  contact: "08181234570",
+  shopNumber: "P06 Row 11"
+},
+{
+  id: 193,
+  name: "Elegant Carpets",
+  category: "Carpets & Rugs",
+  market: "Garki Modern Market",
+  location: "Abuja",
+  products: ["Floor Rugs", "Door Mats"],
+  contact: "08092345681",
+  shopNumber: "Q11 Block 2"
+},
+{
+  id: 194,
+  name: "Adewale's Gadgets",
+  category: "Mobile Accessories",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["Chargers", "Bluetooth Speakers"],
+  contact: "08103456782",
+  shopNumber: "R19 Lane 4"
+},
+{
+  id: 195,
+  name: "Faith Textiles",
+  category: "Textiles",
+  market: "Tejuosho Market",
+  location: "Lagos",
+  products: ["Lace", "Silk"],
+  contact: "08014567894",
+  shopNumber: "S06 Row 5"
+},
+{
+  id: 196,
+  name: "Chijioke Auto",
+  category: "Automobile",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Headlights", "Mirrors"],
+  contact: "08125678905",
+  shopNumber: "T21 Block 8"
+},
+{
+  id: 197,
+  name: "Mama Zainab Spices",
+  category: "Spices",
+  market: "Singer Market",
+  location: "Kano",
+  products: ["Suya Spice", "Curry"],
+  contact: "08036789016",
+  shopNumber: "U04 Lane 7"
+},
+{
+  id: 198,
+  name: "Precious Solar",
+  category: "Solar Energy",
+  market: "Dei Dei Market",
+  location: "Abuja",
+  products: ["Solar Fans", "Inverters"],
+  contact: "08147890127",
+  shopNumber: "V02 Section 6"
+},
+{
+  id: 199,
+  name: "Emmanuel's Hardware",
+  category: "Hardware",
+  market: "Ogbete Main Market",
+  location: "Enugu",
+  products: ["Saws", "Spanners"],
+  contact: "08058901238",
+  shopNumber: "W13 Row 8"
+},
+{
+  id: 200,
+  name: "Queen's Kitchenware",
+  category: "Kitchenware",
+  market: "Oja-Oba Market",
+  location: "Ibadan",
+  products: ["Cooking Pots", "Spoons"],
+  contact: "08169012349",
+  shopNumber: "X08 Block 3"
+},
 
-// Check if no vendors match the filters
-if (vendorsToRender.length === 0) {
-  const noResultsMessage = document.createElement("div");
-  noResultsMessage.classList.add("no-results");
-  noResultsMessage.textContent = "No vendors match your search or filters.";
-  vendorContainer.appendChild(noResultsMessage);
-  return;
+{
+  id: 201,
+  name: "Jumia Nigeria",
+  category: "E-commerce",
+  market: "Online",
+  location: "Lagos",
+  products: ["Electronics", "Groceries", "Fashion"],
+  contact: "07006000000",
+  shopNumber: "1 Jumia Ave, Ikeja"
+},
+{
+  id: 202,
+  name: "Prince Ebeano Supermarket",
+  category: "Retail",
+  market: "Lekki Phase 1",
+  location: "Lagos",
+  products: ["Groceries", "Household", "Beauty"],
+  contact: "08072223344",
+  shopNumber: "Lekki-Epe Expressway"
+},
+{
+  id: 203,
+  name: "SPAR Nigeria",
+  category: "Supermarket",
+  market: "Victoria Island",
+  location: "Lagos",
+  products: ["Groceries", "Appliances", "Toys"],
+  contact: "07001234567",
+  shopNumber: "Adeola Odeku Street"
+},
+{
+  id: 204,
+  name: "Kilimanjaro Restaurant",
+  category: "Restaurant",
+  market: "Garki Area 11",
+  location: "Abuja",
+  products: ["Rice", "Chicken", "Snacks"],
+  contact: "08033445566",
+  shopNumber: "Plot 267, Gimbiya Street"
+},
+{
+  id: 205,
+  name: "Chicken Republic",
+  category: "Fast Food",
+  market: "Multiple Locations",
+  location: "Nationwide",
+  products: ["Chicken", "Rice", "Drinks"],
+  contact: "08055334455",
+  shopNumber: "Outlets Nationwide"
+},
+{
+  id: 206,
+  name: "Deluxe Furniture",
+  category: "Furniture",
+  market: "Ikeja",
+  location: "Lagos",
+  products: ["Sofas", "Tables", "Beds"],
+  contact: "08123455678",
+  shopNumber: "21A Opebi Road"
+},
+{
+  id: 207,
+  name: "Cash 'N' Carry",
+  category: "Electronics",
+  market: "Victoria Island",
+  location: "Lagos",
+  products: ["TVs", "Freezers", "A/Cs"],
+  contact: "08098765432",
+  shopNumber: "Opposite Silverbird Galleria"
+},
+{
+  id: 208,
+  name: "Citydia Nigeria",
+  category: "Supermarket",
+  market: "Yaba",
+  location: "Lagos",
+  products: ["Household", "Groceries"],
+  contact: "08130012345",
+  shopNumber: "Herbert Macaulay Way"
+},
+{
+  id: 209,
+  name: "PayPorte",
+  category: "E-commerce",
+  market: "Online",
+  location: "Lagos",
+  products: ["Fashion", "Electronics"],
+  contact: "07008888888",
+  shopNumber: "Online Store"
+},
+{
+  id: 210,
+  name: "Medplus Pharmacy",
+  category: "Pharmacy",
+  market: "Lekki Phase 1",
+  location: "Lagos",
+  products: ["Drugs", "Beauty", "Wellness"],
+  contact: "08066778899",
+  shopNumber: "Admiralty Way"
+},
+{
+  id: 211,
+  name: "HealthPlus",
+  category: "Pharmacy",
+  market: "Ikeja",
+  location: "Lagos",
+  products: ["Prescriptions", "Supplements"],
+  contact: "08099887766",
+  shopNumber: "12A Allen Avenue"
+},
+{
+  id: 212,
+  name: "Woolworths Nigeria",
+  category: "Fashion",
+  market: "Ikeja City Mall",
+  location: "Lagos",
+  products: ["Clothing", "Shoes", "Accessories"],
+  contact: "08033441222",
+  shopNumber: "Upper Floor, ICM"
+},
+{
+  id: 213,
+  name: "Zara Nigeria",
+  category: "Fashion",
+  market: "Jabi Lake Mall",
+  location: "Abuja",
+  products: ["Men’s & Women’s Fashion"],
+  contact: "09011223344",
+  shopNumber: "1st Floor, Jabi Lake Mall"
+},
+{
+  id: 214,
+  name: "Miniso Nigeria",
+  category: "Lifestyle",
+  market: "Circle Mall",
+  location: "Lagos",
+  products: ["Electronics", "Beauty", "Toys"],
+  contact: "08133445577",
+  shopNumber: "Shop 15, Circle Mall"
+},
+{
+  id: 215,
+  name: "Shoprite Enugu",
+  category: "Retail",
+  market: "Polo Park Mall",
+  location: "Enugu",
+  products: ["Groceries", "Toys", "Clothing"],
+  contact: "07043321100",
+  shopNumber: "Ground Floor, Polo Park"
+},
+{
+  id: 216,
+  name: "Addide Supermarket",
+  category: "Groceries",
+  market: "Yaba",
+  location: "Lagos",
+  products: ["Foodstuff", "Toiletries", "Beverages"],
+  contact: "08077889922",
+  shopNumber: "Commercial Ave, Sabo"
+},
+{
+  id: 217,
+  name: "Domino's Pizza Nigeria",
+  category: "Restaurant",
+  market: "Nationwide",
+  location: "Lagos",
+  products: ["Pizza", "Drinks", "Chicken Wings"],
+  contact: "07000036646",
+  shopNumber: "Outlets Across Nigeria"
+},
+{
+  id: 218,
+  name: "Cold Stone Creamery",
+  category: "Desserts",
+  market: "Victoria Island",
+  location: "Lagos",
+  products: ["Ice Cream", "Cakes", "Milkshakes"],
+  contact: "07000036646",
+  shopNumber: "Adeola Odeku Street"
+},
+{
+  id: 219,
+  name: "KFC Nigeria",
+  category: "Fast Food",
+  market: "Ikoyi",
+  location: "Lagos",
+  products: ["Fried Chicken", "Fries", "Drinks"],
+  contact: "08022334455",
+  shopNumber: "Opp. Ikoyi Club"
+},
+{
+  id: 220,
+  name: "Rite Foods",
+  category: "Beverages",
+  market: "Ikeja",
+  location: "Lagos",
+  products: ["Sausage Rolls", "Drinks"],
+  contact: "08099884422",
+  shopNumber: "Ogba Industrial Estate"
+},
+{
+  id: 221,
+  name: "Indomie Dufil Prima",
+  category: "Food Manufacturing",
+  market: "Ota",
+  location: "Ogun",
+  products: ["Instant Noodles"],
+  contact: "08077889900",
+  shopNumber: "Off Idiroko Road"
+},
+{
+  id: 222,
+  name: "Mama Cass Restaurant",
+  category: "Restaurant",
+  market: "Surulere",
+  location: "Lagos",
+  products: ["Swallow", "Soups", "Snacks"],
+  contact: "08155667788",
+  shopNumber: "Bode Thomas Street"
+},
+{
+  id: 223,
+  name: "Bukka Hut",
+  category: "Restaurant",
+  market: "Lekki",
+  location: "Lagos",
+  products: ["Local Dishes", "Small Chops"],
+  contact: "08011223344",
+  shopNumber: "Admiralty Way"
+},
+{
+  id: 224,
+  name: "Sweet Sensation",
+  category: "Fast Food",
+  market: "Ikeja",
+  location: "Lagos",
+  products: ["Rice", "Spaghetti", "Pastries"],
+  contact: "08066554433",
+  shopNumber: "Allen Avenue"
+},
+{
+  id: 225,
+  name: "Mr. Biggs",
+  category: "Restaurant",
+  market: "Nationwide",
+  location: "Lagos",
+  products: ["Snacks", "Chicken", "Jollof Rice"],
+  contact: "08099887700",
+  shopNumber: "Multiple Locations"
+},
+{
+  id: 226,
+  name: "Ebeano Supermarket GRA",
+  category: "Retail",
+  market: "GRA Ikeja",
+  location: "Lagos",
+  products: ["Household Items", "Snacks", "Grocery"],
+  contact: "08032324455",
+  shopNumber: "Isaac John Street"
+},
+{
+  id: 227,
+  name: "Bishop Gate Fashion",
+  category: "Fashion",
+  market: "Balogun Market",
+  location: "Lagos",
+  products: ["Suits", "Shirts", "Trousers"],
+  contact: "08055443322",
+  shopNumber: "Shop 41, Balogun Plaza"
+},
+{
+  id: 228,
+  name: "Divine Hair Emporium",
+  category: "Beauty",
+  market: "Trade Fair Complex",
+  location: "Lagos",
+  products: ["Wigs", "Human Hair", "Hair Oil"],
+  contact: "08100224466",
+  shopNumber: "Block D15, Hair Zone"
+},
+{
+  id: 229,
+  name: "Queen's Beauty Store",
+  category: "Cosmetics",
+  market: "Onitsha Main Market",
+  location: "Onitsha",
+  products: ["Makeup", "Fragrances"],
+  contact: "09099887766",
+  shopNumber: "Line 7, Shop D9"
+},
+{
+  id: 230,
+  name: "Ugo Phones & Gadgets",
+  category: "Phones",
+  market: "Computer Village",
+  location: "Lagos",
+  products: ["Infinix", "iPhones", "Accessories"],
+  contact: "08112345678",
+  shopNumber: "Shop B16, Otigba"
+},
+{
+  id: 231,
+  name: "Ezenwa Building Materials",
+  category: "Construction",
+  market: "Dei Dei Market",
+  location: "Abuja",
+  products: ["Cement", "Tiles", "PVC"],
+  contact: "08044446666",
+  shopNumber: "Plot 29, Section C"
+},
+{
+  id: 232,
+  name: "Iya Bashirat Foods",
+  category: "Foodstuff",
+  market: "Mile 12 Market",
+  location: "Lagos",
+  products: ["Pepper", "Tomato", "Onions"],
+  contact: "07012223344",
+  shopNumber: "Line 2, Shop K5"
+},
+{
+  id: 233,
+  name: "Zubairu Auto Parts",
+  category: "Automobile",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Brake Pads", "Shocks", "Tyres"],
+  contact: "08034568899",
+  shopNumber: "Shop C3, Block 8"
+},
+{
+  id: 234,
+  name: "Habeeb Tyres",
+  category: "Automobile",
+  market: "Ladipo Market",
+  location: "Lagos",
+  products: ["Tokunbo Tyres", "New Tyres"],
+  contact: "08144556633",
+  shopNumber: "Unit B10"
+},
+{
+  id: 235,
+  name: "Nkechi Fashion House",
+  category: "Fashion",
+  market: "Ariaria Market",
+  location: "Aba",
+  products: ["Native Wears", "Gowns", "Skirts"],
+  contact: "08066778899",
+  shopNumber: "Line 14, Shop A3"
+},
+{
+  id: 236,
+  name: "Olatunji Paints",
+  category: "Building Materials",
+  market: "Bodija Market",
+  location: "Ibadan",
+  products: ["Emulsion", "Gloss", "Wall Finish"],
+  contact: "07044553322",
+  shopNumber: "Section 6, Plot 9"
+},
+{
+  id: 237,
+  name: "Shafa Plastic Depot",
+  category: "Household",
+  market: "Oshodi Market",
+  location: "Lagos",
+  products: ["Buckets", "Bowls", "Storage"],
+  contact: "08132210044",
+  shopNumber: "Zone B, Shop 18"
+},
+{
+  id: 238,
+  name: "Alhaji Musa Rice Shop",
+  category: "Foodstuff",
+  market: "Singer Market",
+  location: "Kano",
+  products: ["Bags of Rice", "Garri", "Beans"],
+  contact: "08199887744",
+  shopNumber: "Row 5, Stall 7"
+},
+{
+  id: 239,
+  name: "Debby Stationery Mart",
+  category: "Office Supplies",
+  market: "Ekeoha Market",
+  location: "Aba",
+  products: ["Pens", "Files", "Books"],
+  contact: "08033993322",
+  shopNumber: "Booth 22, Hall C"
+},
+{
+  id: 240,
+  name: "Olaoluwa Tailor Supplies",
+  category: "Fashion Supplies",
+  market: "Gbagi Market",
+  location: "Ibadan",
+  products: ["Needles", "Buttons", "Threads"],
+  contact: "08144332211",
+  shopNumber: "Stall B20"
+},
+
+
+
+];
+
+// Add 150 more vendors (sampled with dummy data to reach 200)
+for(let i = 1199; i <= 1200; i++) {
+  vendors.push({
+    id: i,
+    name: `Sample Vendor ${i}`,
+    category: ["Fashion", "Electronics", "Groceries", "Furniture", "Automobile", "Cosmetics", "Toys", "Books", "Jewelry", "Home Decor"][i % 10],
+    market: [
+      "Alaba International Market", "Ogui Market", "Balogun Market", "Computer Village, Ikeja",
+      "Mile 12 Market", "Dei Dei Market", "Ariaria International Market", "Wuse Market",
+      "Onitsha Main Market", "Ladipo Market"
+    ][i % 10],
+    location: ["Lagos", "Enugu", "Abuja", "Aba", "Onitsha", "Port Harcourt"][i % 6],
+    products: [
+      ["Product A", "Product B"],
+      ["Item X", "Item Y", "Item Z"],
+      ["Gadget 1", "Gadget 2"],
+      ["Accessory 1", "Accessory 2", "Accessory 3"]
+    ][i % 4],
+    contact: `08000000${100 + i}`,
+    shopNumber: `Shop ${i} Block ${String.fromCharCode(65 + (i % 10))}`
+  });
 }
 
-// Render each vendor
-vendorsToRender.forEach(vendor => {
-  const vendorCard = document.createElement("div");
-  vendorCard.classList.add("vendor-card");
+// The rest of your JavaScript remains the same
+document.addEventListener("DOMContentLoaded", function() {
+    const vendorContainer = document.querySelector(".vendor-container");
+    const searchInput = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+    const marketFilter = document.getElementById("market-filter");
+    const categoryFilter = document.getElementById("category-filter");
+    const resetBtn = document.getElementById("reset-filters");
+    const resultsCount = document.getElementById("results-count");
+    const activeFilters = document.getElementById("active-filters");
+    
+    let currentVendors = [];
+    let currentSearchTerm = "";
+    let currentMarketFilter = "";
+    let currentCategoryFilter = "";
+    
+    // Initialize the app
+    initMarketplace();
+    
+    function initMarketplace() {
+      // Render initial vendors
+      currentVendors = [...vendors];
+      renderVendors(currentVendors);
+      
+      // Populate filter dropdowns
+      populateFilters();
+      
+      // Set up event listeners
+      setupEventListeners();
+    }
+    
+    function populateFilters() {
+      // Get unique markets and categories
+      const markets = [...new Set(vendors.map(v => v.market))];
+      const categories = [...new Set(vendors.map(v => v.category))];
+      
+      // Populate market filter
+      markets.sort().forEach(market => {
+        const option = document.createElement("option");
+        option.value = market;
+        option.textContent = market;
+        marketFilter.appendChild(option);
+      });
+      
+      // Populate category filter
+      categories.sort().forEach(category => {
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = category;
+        categoryFilter.appendChild(option);
+      });
+    }
+    
+    function setupEventListeners() {
+      // Search button click
+      searchBtn.addEventListener("click", performSearch);
+      
+      // Enter key in search input
+      searchInput.addEventListener("keyup", function(e) {
+        if (e.key === "Enter") {
+          performSearch();
+        }
+      });
+      
+      // Filter changes
+      marketFilter.addEventListener("change", function() {
+        currentMarketFilter = this.value;
+        filterVendors();
+      });
+      
+      categoryFilter.addEventListener("change", function() {
+        currentCategoryFilter = this.value;
+        filterVendors();
+      });
+      
+      // Reset filters
+      resetBtn.addEventListener("click", resetFilters);
+    }
+    
+    function performSearch() {
+      currentSearchTerm = searchInput.value.trim().toLowerCase();
+      filterVendors();
+    }
+    
+    function filterVendors() {
+      // Start with all vendors
+      let filtered = [...vendors];
+      
+      // Apply search term filter
+      if (currentSearchTerm) {
+        filtered = filtered.filter(vendor => {
+          // Search vendor name, products, and category
+          const nameMatch = vendor.name.toLowerCase().includes(currentSearchTerm);
+          const productMatch = vendor.products.some(p => 
+            p.toLowerCase().includes(currentSearchTerm)
+          );
+          const categoryMatch = vendor.category.toLowerCase().includes(currentSearchTerm);
+          const marketMatch = vendor.market.toLowerCase().includes(currentSearchTerm);
+          
+          return nameMatch || productMatch || categoryMatch || marketMatch;
+        });
+      }
+      
+      // Apply market filter
+      if (currentMarketFilter) {
+        filtered = filtered.filter(vendor => 
+          vendor.market === currentMarketFilter
+        );
+      }
+      
+      // Apply category filter
+      if (currentCategoryFilter) {
+        filtered = filtered.filter(vendor => 
+          vendor.category === currentCategoryFilter
+        );
+      }
+      
+      // Update current vendors and render
+      currentVendors = filtered;
+      renderVendors(currentVendors);
+      
+      // Update active filters display
+      updateActiveFilters();
+    }
+    
+    function resetFilters() {
+      // Reset all filters
+      searchInput.value = "";
+      marketFilter.value = "";
+      categoryFilter.value = "";
+      
+      // Reset state
+      currentSearchTerm = "";
+      currentMarketFilter = "";
+      currentCategoryFilter = "";
+      
+      // Show all vendors
+      currentVendors = [...vendors];
+      renderVendors(currentVendors);
+      
+      // Update active filters display
+      updateActiveFilters();
+    }
+    
+    function updateActiveFilters() {
+      const activeFiltersList = [];
+      
+      if (currentSearchTerm) {
+        activeFiltersList.push(`Search: "${currentSearchTerm}"`);
+      }
+      
+      if (currentMarketFilter) {
+        activeFiltersList.push(`Market: ${currentMarketFilter}`);
+      }
+      
+      if (currentCategoryFilter) {
+        activeFiltersList.push(`Category: ${currentCategoryFilter}`);
+      }
+      
+      if (activeFiltersList.length > 0) {
+        activeFilters.textContent = activeFiltersList.join(" • ");
+      } else {
+        activeFilters.textContent = "Showing all vendors";
+      }
+    }
+    
+    function renderVendors(vendorsToRender) {
+      // Clear existing vendors
+      vendorContainer.innerHTML = "";
+      
+      // Update results count
+      resultsCount.textContent = `${vendorsToRender.length} vendor(s) found`;
 
-  vendorCard.innerHTML = `
-    <h3 class="vendor-name">${vendor.name}</h3>
-    <span class="vendor-category">${vendor.category}</span>
-    <div class="vendor-location">${vendor.location}</div>
-    <div class="vendor-products">
-      <strong>Products:</strong> ${vendor.products.join(", ")}
-    </div>
-    <div class="vendor-contact">
-      <div>
-        <strong>Contact:</strong> ${vendor.contact}<br>
-        <strong>Shop:</strong> ${vendor.shopNumber || vendor.shopAddress}
-      </div>
-      <button class="contact-btn" onclick="alert('Contacting ${vendor.name}...')">Contact</button>
-    </div>
-  `;
+      // Check if no vendors match the filters
+      if (vendorsToRender.length === 0) {
+        const noResultsMessage = document.createElement("div");
+        noResultsMessage.classList.add("no-results");
+        noResultsMessage.textContent = "No vendors match your search or filters.";
+        vendorContainer.appendChild(noResultsMessage);
+        return;
+      }
 
-  vendorContainer.appendChild(vendorCard);
+      // Render each vendor
+      vendorsToRender.forEach(vendor => {
+        const vendorCard = document.createElement("div");
+        vendorCard.classList.add("vendor-card");
+
+        vendorCard.innerHTML = `
+          <h3 class="vendor-name">${vendor.name}</h3>
+          <span class="vendor-category">${vendor.category}</span>
+          <div class="vendor-location">${vendor.location}</div>
+          <div class="vendor-products">
+            <strong>Products:</strong> ${vendor.products.join(", ")}
+          </div>
+          <div class="vendor-contact">
+            <div>
+              <strong>Contact:</strong> ${vendor.contact}<br>
+              <strong>Shop:</strong> ${vendor.shopNumber || vendor.shopAddress}
+            </div>
+            <button class="contact-btn" onclick="alert('Contacting ${vendor.name}...')">Contact</button>
+          </div>
+        `;
+
+        vendorContainer.appendChild(vendorCard);
+      });
+    }
 });
-}
-});
-</script>
+
+    </script>
 </body>
 </html>
